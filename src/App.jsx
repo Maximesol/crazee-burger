@@ -1,5 +1,5 @@
-import { useState } from "react";
-import LoginPage from "./components/pages/login/LoginPage";
+import { useState } from "react"
+import LoginPage from "./components/pages/login/LoginPage"
 
 // import "./App.css";
 
@@ -9,7 +9,7 @@ function App() {
   // comportement
 
   // affichage
-  return <LoginPage />;
+  return <LoginPage />
 }
 
-export default App;
+export default App

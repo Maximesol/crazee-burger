@@ -1,6 +1,6 @@
-import React from "react";
-import { useState } from "react";
-import LoginForm from "./LoginForm";
+import React from "react"
+import { useState } from "react"
+import LoginForm from "./LoginForm"
 
 export default function LoginPage() {
   //state
@@ -9,5 +9,5 @@ export default function LoginPage() {
 
   // affichage
 
-  return <LoginForm />;
+  return <LoginForm />
 }
