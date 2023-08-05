@@ -2,12 +2,12 @@ import React from "react"
 import { useState } from "react"
 import LoginForm from "./LoginForm"
 
-export default function LoginPage() {
+export default function LoginPage({ setUsername }) {
   //state
 
   // comportement
 
   // affichage
 
-  return <LoginForm />
+  return <LoginForm setUsername={setUsername} />
 }
