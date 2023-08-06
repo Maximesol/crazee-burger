@@ -9,5 +9,5 @@ export default function LoginPage({ setUsername }) {
 
   // affichage
 
-  return <LoginForm setUsername={setUsername} />
+  return <LoginForm setUsername={setUsername} />;
 }

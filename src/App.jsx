@@ -4,6 +4,7 @@ import LoginPage from "./components/pages/login/LoginPage"
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import OrderPage from "./components/pages/OrderPage"
 import UserContext from './UserContext'
+import ErrorPage from "./components/pages/ErrorPage"
 
 // import "./App.css";
 
@@ -16,6 +17,10 @@ function App() {
   // comportement
   const router = createBrowserRouter([
     {
+      path: '/',
+      element: <LoginPage setUsername={setUsername} />,
+    },
+    {
       path: '/login',
       element: <LoginPage setUsername={setUsername} />,
     },
@@ -23,7 +28,12 @@ function App() {
       path: '/order',
       element: <OrderPage />,
     },
+    {
+      path: '*', // Route joker
+      element: <ErrorPage />,
+    },
   ]);
+
 
   // affichage
   return (
