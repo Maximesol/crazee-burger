@@ -1,23 +1,19 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom"
-import UserContext from "../../UserContext";
-
+import React from "react";
+import { useParams, Link } from "react-router-dom"
 export default function OrderPage() {
     //state
-    const navigate = useNavigate()
-    const username = useContext(UserContext)
-
+    const { username } = useParams()
     //comportement
-    const handleClick = () => {
-        navigate('/login')
-    }
+
 
     //affichage
 
     return (
         <div>
-            <h1>{`Bonjour ${username}`}</h1>
-            <button onClick={handleClick}>Deconnexion</button>
+            <h1>Bonjour {username}</h1>
+            <Link to="/">
+                <button>Deconnexion</button>
+            </Link>
         </div>
     )
 }
