@@ -9,5 +9,5 @@ export default function LoginPage() {
 
   // affichage
 
-  return <LoginForm />
+  return <LoginForm />;
 }
