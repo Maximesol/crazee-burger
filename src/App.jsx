@@ -1,9 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import { useState } from "react"
 import LoginPage from "./components/pages/login/LoginPage"
 import { Routes, Route } from 'react-router-dom'
 import OrderPage from "./components/pages/OrderPage"
-import UserContext from './UserContext'
 import ErrorPage from "./components/pages/ErrorPage"
 
 // import "./App.css";
@@ -20,13 +19,13 @@ function App() {
 
   // affichage
   return (
-    <UserContext.Provider value={username}>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/order/:username" element={<OrderPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </UserContext.Provider>)
+
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/order/:username" element={<OrderPage />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
+  )
 }
 
 export default App
