@@ -1,12 +1,18 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { BsPersonCircle } from "react-icons/bs"
+import { IoChevronForward } from "react-icons/io5"
+import { TbHandClick } from "react-icons/tb"
+import Input from "./Input";
+
+
 
 export default function LoginForm() {
     // state
     const [name, setName] = useState("");
     const navigate = useNavigate()
+    const [isActive, setIsActive] = useState(false)
+
 
 
     // comportements
@@ -16,24 +22,33 @@ export default function LoginForm() {
         setName("");
     };
 
+
+
+
+
     // affichage
     return (
         <LoginFormStyled action="submit" onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
             <hr className="separation" />
             <h2>Connectez-vous</h2>
-            <div className="div--input">
-                <BsPersonCircle className="icon" />
-                <input
-                    value={name}
-                    type="text"
-                    placeholder="Entrez votre prénom"
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                ></input>
-            </div>
+            <Input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="Entrez votre prénom"
+                required
+            />
+            <button>
+                Accédez à votre espace
+                <div className="chevron-icon">
+                    <IoChevronForward />
+                    <TbHandClick className="click-icon" />
 
-            <button>Accédez à votre espace</button>
+                </div>
+            </button>
+
+
 
 
         </LoginFormStyled>
@@ -51,14 +66,36 @@ const LoginFormStyled = styled.form`
     color: white;
   }
 
+  .chevron-icon {
+  width: 15px;
+  height: 15px;
+}
+
+button .click-icon {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+button:active .click-icon {
+    opacity: 1;
+    width: 76px;
+    height: 82px;
+    color: white;
+}
+
+
+
+
   button {
+    
 
     display: flex;
     width: 400px;
     height: 53px;
     padding: 18px 106.203px;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    white-space: nowrap;
     gap: 9.8px;
     flex-shrink: 0;
     border-radius: 5px;
@@ -73,6 +110,13 @@ const LoginFormStyled = styled.form`
     font-weight: 700;
     line-height: 15px; /* 100% */
   }
+
+  button:hover {
+  background: #FFF;
+  color: #FF9F1B; /* Changer la couleur du texte si nécessaire */
+}
+
+ 
 
   h1 {
     color: #FFF;
