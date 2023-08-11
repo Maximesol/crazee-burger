@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { IoChevronForward } from "react-icons/io5"
+import { BsPersonCircle } from "react-icons/bs"
 import { TbHandClick } from "react-icons/tb"
-import Input from "./Input";
+import TextInput from "../../reusable-ui/TextInput";
 
 
 
@@ -32,12 +33,13 @@ export default function LoginForm() {
             <h1>Bienvenue chez nous !</h1>
             <hr className="separation" />
             <h2>Connectez-vous</h2>
-            <Input
+            <TextInput
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type="text"
                 placeholder="Entrez votre prénom"
                 required
+                Icon={<BsPersonCircle className="icon" />}
             />
             <button>
                 Accédez à votre espace
@@ -129,20 +131,7 @@ button:active .click-icon {
     
   }
 
-  .div--input {
-    outline: none;
-    display: inline-flex;
-    justify-content:flex-start;
-    align-items: center;
-    gap: 12.797px;
-    border-radius: 5px;
-    background: #FFF;
-    color: #747B91;
-    font-size: 16px;
-    width: 400px;
-    height: 53px;
-
-  }
+  
   
   
 
@@ -165,15 +154,7 @@ button:active .click-icon {
     
   }
 
-  input {
-    border: none;
-    outline: none;
-    background: #FFF;
-    color: #747B91;
-    font-size: 16px;
-    
-
-  }
+  
 
   .separation {
     width: 400px;
