@@ -36,7 +36,7 @@ const OrderPageStyled = styled.div`
     align-items: center;
 
     .container {
-    border: 3px solid red;
+    
     height: 95vh;
     display: flex;
     flex-direction: column;

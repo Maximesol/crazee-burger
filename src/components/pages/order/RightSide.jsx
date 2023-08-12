@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import Profile from "./Profile"
+
+
 
 export default function RightSide({ username }) {
     return (
         <RightSideStyled>
-            <h1>Bonjour {username}</h1>
-            <Link to="/">
-                <button>Deconnexion</button>
-            </Link>
+            <Profile />
         </RightSideStyled>
     )
 }
@@ -16,6 +15,8 @@ export default function RightSide({ username }) {
 
 const RightSideStyled = styled.div`
   
-        background: purple;
+        display: flex;
+        align-items: center;
+        padding-right: 50px;
     
 `;
