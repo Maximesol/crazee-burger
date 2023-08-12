@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { theme } from '../../theme';
 
 
 export default function Logo() {
@@ -27,12 +28,12 @@ const LogoStyled = styled.div`
   h1 {
     display:flex;
     align-items: center;
-    color: #FFA01B;
+    color: ${theme.colors.primary};
     text-align: center;
     font-family: Amatic SC, cursive;
-    font-size: 36px;
+    font-size: ${theme.fonts.P4};
     font-style: normal;
-    font-weight: 700;
+    font-weight: ${theme.weights.bold};
     line-height: 1em;
     letter-spacing: 1.5px;
     text-transform: uppercase;

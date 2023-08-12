@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 
 
@@ -27,8 +28,8 @@ const InputStyled = styled.div`
     align-items: center;
     gap: 12.797px;
     border-radius: 5px;
-    background: #FFF;
-    color: #747B91;
+    background: ${theme.colors.white};
+    color: ${theme.colors.greyBlue};
     font-size: 16px;
     width: 400px;
     height: 53px;
@@ -36,7 +37,7 @@ const InputStyled = styled.div`
     input {
     border: none;
     outline: none;
-    background: #FFF;
+    background: ${theme.colors.white};
     color: #747B91;
     font-size: 16px;
     

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 
 export default function PrimaryButton({ Icon, label }) {
@@ -13,9 +14,6 @@ export default function PrimaryButton({ Icon, label }) {
 
 const ButtonStyled = styled.button`
 
-
-    
-
     display: flex;
     width: 400px;
     height: 53px;
@@ -25,21 +23,21 @@ const ButtonStyled = styled.button`
     white-space: nowrap;
     gap: 9.8px;
     flex-shrink: 0;
-    border-radius: 5px;
+    border-radius: ${theme.borderRadius.round};
     border: 1px solid #FF9F1B;
     background: #FF9F1B;
     margin-top: 18px;
-    color: #FFF;
+    color: ${theme.colors.white};
     text-align: center;
     font-family: Arial;
-    font-size: 15px;
+    font-size: ${theme.fonts.P0};
     font-style: normal;
-    font-weight: 700;
+    font-weight: ${theme.weights.bold};
     line-height: 15px; /* 100% */
     
 
     &:hover {
-        background: #FFF;
+        background: ${theme.colors.white};
         color: #FF9F1B; /* Changer la couleur du texte si nécessaire */
     }
 
