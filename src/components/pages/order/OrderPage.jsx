@@ -1,7 +1,9 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import Main from "./Main";
+import NavBar from "./NavBar";
 
 
 export default function OrderPage() {
@@ -17,16 +19,9 @@ export default function OrderPage() {
     return (
         <OrderPageStyled>
             <div className="container">
-                <nav className="navBar">
-                    NavBar
-                    <h1>Bonjour {username}</h1>
-                    <Link to="/">
-                        <button>Deconnexion</button>
-                    </Link>
-                </nav>
-                <div className="main">
-                    Main
-                </div>
+                <NavBar username={username} />
+                <Main />
+
             </div>
         </OrderPageStyled>
     )
@@ -37,23 +32,17 @@ const OrderPageStyled = styled.div`
     background: ${theme.colors.primary};
     height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .container {
-    background: red;
+    border: 3px solid red;
     height: 95vh;
     display: flex;
     flex-direction: column;
-    }
-
-    .navBar{
-        background: blue;
-        height: 10vh;
-
-    }
-    .main{
-        background: green;
-        flex:1;
-    }
+    width:1400px;
+    
+}
+    
     
 `;
