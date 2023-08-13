@@ -7,7 +7,7 @@ export default function Logo({ scale = 1, onClick, className }) {
   return (
     <LogoStyled scale={scale} onClick={onClick} className={className}>
       <h1>CRAZEE</h1>
-      <img src="/public/images/logo-burger.png" />
+      <img src="/images/logo-burger.png" />
       <h1>BURGER</h1>
 
     </LogoStyled>
