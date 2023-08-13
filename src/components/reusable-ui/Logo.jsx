@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { theme } from '../../theme';
 
 
-export default function Logo({ scale = 1, onClick, className }) {
+export default function Logo({ onClick, className }) {
   return (
-    <LogoStyled scale={scale} onClick={onClick} className={className}>
+    <LogoStyled onClick={onClick} className={className}>
       <h1>CRAZEE</h1>
       <img src="/images/logo-burger.png" />
       <h1>BURGER</h1>
@@ -17,7 +17,6 @@ export default function Logo({ scale = 1, onClick, className }) {
 const LogoStyled = styled.div`
   display:flex;
   align-items: center;
-  transform: scale(${props => props.scale});
   font-family: 'Amatic SC', cursive, sans-serif;
 
   img {
