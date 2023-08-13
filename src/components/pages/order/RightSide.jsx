@@ -6,8 +6,8 @@ import Profile from "./Profile"
 
 export default function RightSide({ username }) {
     return (
-        <RightSideStyled>
-            <Profile />
+        <RightSideStyled >
+            <Profile username={username} />
         </RightSideStyled>
     )
 }
