@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { theme } from '../../theme';
 
 
-export default function Logo() {
+export default function Logo({ onClick, className }) {
   return (
-    <LogoStyled>
+    <LogoStyled onClick={onClick} className={className}>
       <h1>CRAZEE</h1>
-      <img src="/public/images/logo-burger.png" />
+      <img src="/images/logo-burger.png" />
       <h1>BURGER</h1>
 
     </LogoStyled>
@@ -17,7 +17,8 @@ export default function Logo() {
 const LogoStyled = styled.div`
   display:flex;
   align-items: center;
-  transform: scale(2.5);
+  font-family: 'Amatic SC', cursive, sans-serif;
+
   img {
     object-fit: contain;
     object-position: center;
@@ -26,11 +27,11 @@ const LogoStyled = styled.div`
     margin: 0 5px;
   }
   h1 {
-    display:flex;
+    display:inline;
     align-items: center;
     color: ${theme.colors.primary};
     text-align: center;
-    font-family: Amatic SC, cursive;
+    font-family: "Amatic SC", cursive;
     font-size: ${theme.fonts.P4};
     font-style: normal;
     font-weight: ${theme.weights.bold};

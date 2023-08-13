@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   return (
     <LoginPageStyled>
-      <Logo />
+      <Logo className="logo-login-page" />
       <LoginForm />
     </LoginPageStyled>)
 }
@@ -26,9 +26,13 @@ const LoginPageStyled = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("images/F03 burger-background.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5)), url("/images/F03 burger-background.jpg");
   background-size: cover;
   background-position: center;
   margin: 0;
   padding: 0;
+
+  .logo-login-page {
+    scale: 2.5;
+  }
 `;
