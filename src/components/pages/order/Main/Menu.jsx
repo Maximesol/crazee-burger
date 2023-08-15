@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import Product from './Products';
+import Card from './Card';
 import { useState } from 'react';
 import { fakeMenu2 } from '../../../../fakeData/fakeMenu';
 
@@ -21,11 +21,11 @@ export default function Menu() {
   return (
     <MenuStyled>
       {menu.map((product) => {
-        return <Product
+        return <Card
           key={product.id}
           title={product.title}
           imageSource={product.imageSource}
-          price={product.price}></Product>
+          price={product.price}></Card>
       })}
 
     </MenuStyled>

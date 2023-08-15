@@ -6,37 +6,37 @@ import { theme } from '../../../../theme';
 
 
 
-export default function Product({ imageSource, title, price }) {
+export default function Card({ imageSource, title, price }) {
 
 
 
 
-    return (
-        <ProductStyled>
+  return (
+    <CardStyled>
 
-            <img src={imageSource} className="image" />
-            <div className='info'>
-                <div className='title'>
-                    {title}
-                </div>
-                <div className='description'>
-                    <div className='price'>
-                        {formatPrice(price)}
-                    </div>
+      <img src={imageSource} className="image" />
+      <div className='info'>
+        <div className='title'>
+          {title}
+        </div>
+        <div className='description'>
+          <div className='price'>
+            {formatPrice(price)}
+          </div>
 
-                    <div className='right-descritption'>
-                        <PrimaryButton label="Ajouter" className="button-product" />
-                    </div>
-                </div>
+          <div className='right-descritption'>
+            <PrimaryButton label="Ajouter" className="button-card" />
+          </div>
+        </div>
 
-            </div>
+      </div>
 
-        </ProductStyled>
-    )
+    </CardStyled>
+  )
 }
 
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
   
 display: grid;
 width: 240px;
@@ -110,7 +110,7 @@ border-radius: ${theme.borderRadius.extraRound};
     font-size: ${theme.fonts.P1};
   }
 
-  .button-product {
+  .button-card {
     font-size: ${theme.fonts.XS};
     cursor: pointer;
     padding: 12px;
