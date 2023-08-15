@@ -23,6 +23,7 @@ const NavBarStyled = styled.nav`
     padding: 0 20px;
     border-radius: 15px 15px 0px 0px;
     align-items:center;
+    border-bottom: 1px solid ${theme.colors.greyLight};
 
     
 `;

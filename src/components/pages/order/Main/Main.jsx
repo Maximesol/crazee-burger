@@ -20,6 +20,7 @@ const MainStyled = styled.div`
     border-radius: 0px 0px 15px 15px;
 
     overflow-y: scroll;
+    overflow-x: scroll;
     display: grid;
     grid-template-columns: 1fr;
     /* for the future basket grid on the left :
