@@ -1,8 +1,8 @@
 
 import styled from 'styled-components';
-import { formatPrice } from '../../../../utils/maths';
-import PrimaryButton from '../../../reusable-ui/PrimaryButton';
-import { theme } from '../../../../theme';
+import { formatPrice } from '../../utils/maths';
+import PrimaryButton from './PrimaryButton';
+import { theme } from '../../theme';
 
 
 
