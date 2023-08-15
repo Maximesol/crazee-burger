@@ -21,7 +21,7 @@ export default function Product({ imageSource, title, price }) {
                 </div>
                 <div className='description'>
                     <div className='price'>
-                        {price}
+                        {formatPrice(price)}
                     </div>
 
                     <div className='right-descritption'>
