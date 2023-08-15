@@ -41,6 +41,7 @@ export default function LoginForm() {
 
         }
         label="Accéder à votre espace"
+        className="bouton-login"
 
       />
 
@@ -101,6 +102,12 @@ const LoginFormStyled = styled.form`
     height: 2px;
     border: 1px solid #F56A2C;
     background: #F56A2C;
+  }
+
+  .bouton-login {
+    width: 400px;
+    height: 53px;
+    margin-top: 18px;
   }
 
   
