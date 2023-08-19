@@ -10,5 +10,8 @@ export default function AdminPanel() {
 }
 
 const AdminPanelStyled = styled.div`
-  border: 2px solid red;
+    height: 250px;
+    border: 1px solid #E4E5E9;
+    background: #FFF;
+    box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
 `;
