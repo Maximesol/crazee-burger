@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 import ToggleButton from '../../../reusable-ui/ToggleButton';
 import Profile from "./Profile"
-import { useState } from 'react';
+import { useContext } from 'react';
 import { toast } from "react-toastify"
 import ToastAdmin from './ToastAdmin';
+import AdminContext from '../../../../contexts/AdminContext';
 
 
 
@@ -12,7 +13,7 @@ import ToastAdmin from './ToastAdmin';
 export default function RightSide({ username }) {
 
     //state
-    const [isAdmin, setIsAdmin] = useState(false)
+    const { isAdmin, setIsAdmin } = useContext(AdminContext)
 
     //comportement
     const handleToggle = () => {

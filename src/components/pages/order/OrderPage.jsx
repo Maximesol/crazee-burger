@@ -1,9 +1,10 @@
-import React from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom"
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import NavBar from "./NavBar/NavBar";
+import AdminContext from "../../../contexts/AdminContext";
 
 
 export default function OrderPage() {
@@ -11,19 +12,27 @@ export default function OrderPage() {
 
     //state
     const { username } = useParams()
+    const [isAdmin, setIsAdmin] = useState(false)
+
+    const adminContextValue = {
+        isAdmin,
+        setIsAdmin
+    }
+
     //comportement
 
 
     //affichage
 
     return (
-        <OrderPageStyled>
-            <div className="container">
-                <NavBar username={username} />
-                <Main />
-
-            </div>
-        </OrderPageStyled>
+        <AdminContext.Provider value={adminContextValue}>
+            <OrderPageStyled>
+                <div className="container">
+                    <NavBar username={username} />
+                    <Main />
+                </div>
+            </OrderPageStyled>
+        </AdminContext.Provider>
     )
 }
 

@@ -1,17 +1,26 @@
-import React from 'react'
+import { useContext } from 'react';
 import styled from 'styled-components';
+import AdminContext from '../../../../contexts/AdminContext';
 import { theme } from '../../../../theme';
 import Admin from './Admin/Admin';
 import Menu from './Menu';
 
 
 export default function Main() {
+
+    //state
+    const { isAdmin, setIsAdmin } = useContext(AdminContext)
+
+
+    //comportements
+
+    //affichage
     return (
         <MainStyled>
             {/* <div className='basket'>BASKET</div> */}
             <div className='menu-add-admin'>
                 <Menu />
-                <Admin />
+                {isAdmin && <Admin />}
             </div>
         </MainStyled>
     )
