@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from 'styled-components';
 import { theme } from '../../../../theme';
+import Admin from './Admin/Admin';
 import Menu from './Menu';
 
 
 export default function Main() {
     return (
         <MainStyled>
-            <Menu />
-            {/* <div className='basket'>BASKET</div>  */}
+            {/* <div className='basket'>BASKET</div> */}
+            <div className='menu-add-admin'>
+                <Menu />
+                <Admin />
+            </div>
         </MainStyled>
     )
 }
@@ -20,17 +24,23 @@ const MainStyled = styled.div`
     border-radius: 0px 0px 15px 15px;
 
     overflow-y: scroll;
-    overflow-x: scroll;
+    
     display: grid;
-    grid-template-columns: 1fr;
-    /* for the future basket grid on the left :
-    grid-template-columns: 20% 1fr; */ 
+    ${'' /* grid-template-columns: 1fr; */}
+    grid-template-columns: 1fr; 
     
     
 
-    .menu{
+    ${'' /* .basket{
         background: pink;
+    } */}
+
     
+    .menu-add-admin{
+        
+        position: relative;
+        overflow-y: hidden;
+        display: grid;
     }
     
 `;

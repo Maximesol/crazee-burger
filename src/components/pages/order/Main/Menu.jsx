@@ -36,11 +36,12 @@ export default function Menu() {
 const MenuStyled = styled.div`
   display: grid;
   grid-row-gap: 60px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 50px 50px 150px;
   justify-items: center;
   background: #F5F5F7;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  overflow-y: scroll;
 
   
 `;
