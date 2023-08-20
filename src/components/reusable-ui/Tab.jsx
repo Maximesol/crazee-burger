@@ -1,15 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Tab({ Icon, onClick }) {
+export default function Tab({ Icon, onClick, className }) {
   return (
-    <TabsStyled onClick={onClick}>
+    <TabStyled onClick={onClick} className={className}>
       <div className='icon'>{Icon}</div>
-    </TabsStyled>
+    </TabStyled>
   )
 }
 
-const TabsStyled = styled.button`
+const TabStyled = styled.button`
   /* layout */
     
     height: 43px;

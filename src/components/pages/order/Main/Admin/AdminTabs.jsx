@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
-import { FiChevronDown } from "react-icons/fi"
+import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import Tab from '../../../../reusable-ui/Tab';
 
-export default function AdminTabs({ isCollapse, setIsCollapse }) {
+export default function AdminTabs({ isOpen, setIsOpen }) {
     //state
 
     //comportement
@@ -12,7 +12,11 @@ export default function AdminTabs({ isCollapse, setIsCollapse }) {
     //affichage
     return (
         <AdminTabsStyled>
-            <Tab Icon={<FiChevronDown />} onClick={() => setIsCollapse(!isCollapse)} />
+            <Tab
+                Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
+                onClick={() => setIsOpen(!isOpen)}
+                className={!isOpen ? "is-active" : ""}
+            />
         </AdminTabsStyled>
     )
 }
@@ -21,4 +25,15 @@ const AdminTabsStyled = styled.div`
   
   display: flex;
   padding: 0 20px;
+
+  .is-active{
+border-radius: 5px 5px 0px 0px;
+border-top: 1px solid #292729;
+border-right: 1px solid #292729;
+border-bottom: 2px solid #292729;
+border-left: 1px solid #292729;
+background: #292729;
+box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
+color:white;
+  }
 `;

@@ -5,16 +5,16 @@ import { useState } from 'react';
 
 export default function Admin() {
 
-    //state
-    const [isCollapse, setIsCollapse] = useState(true)
+    //state 
+    const [isOpen, setIsOpen] = useState(true)
 
     //comportement
 
     //affichage
     return (
         <AdminStyled>
-            <AdminTabs isCollapse={isCollapse} setIsCollapse={setIsCollapse} />
-            {isCollapse && <AdminPanel />}
+            <AdminTabs isOpen={isOpen} setIsOpen={setIsOpen} />
+            {isOpen && <AdminPanel />}
         </AdminStyled>
     )
 }
