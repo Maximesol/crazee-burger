@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
+import { AiOutlinePlus } from 'react-icons/ai'
 import Tab from '../../../../reusable-ui/Tab';
 
 export default function AdminTabs({ isOpen, setIsOpen }) {
@@ -13,7 +14,14 @@ export default function AdminTabs({ isOpen, setIsOpen }) {
     return (
         <AdminTabsStyled>
             <Tab
+                label=""
                 Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
+                onClick={() => setIsOpen(!isOpen)}
+                className={!isOpen ? "is-active" : ""}
+            />
+            <Tab
+                label="Ajouter un produit"
+                Icon={<AiOutlinePlus />}
                 onClick={() => setIsOpen(!isOpen)}
                 className={!isOpen ? "is-active" : ""}
             />
@@ -35,5 +43,9 @@ border-left: 1px solid #292729;
 background: #292729;
 box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.10);
 color:white;
+  }
+
+  button {
+    margin-left: 1px;
   }
 `;
