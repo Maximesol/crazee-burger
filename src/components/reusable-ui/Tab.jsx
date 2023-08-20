@@ -43,8 +43,9 @@ const TabStyled = styled.button`
   line-height: normal;
 
   &:hover {
-        border: 2px solid white;  /* Ceci est une suggestion de couleur, vous pouvez la changer selon vos préférences */
-    }
+        border: 2px solid white;
+        text-decoration: underline;    
+        }
 
   .icon{
     display: flex;

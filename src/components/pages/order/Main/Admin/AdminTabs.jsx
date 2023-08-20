@@ -1,32 +1,55 @@
-import React from 'react'
+import { useState } from 'react';
 import styled from 'styled-components';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { AiOutlinePlus } from 'react-icons/ai'
+import { MdModeEditOutline } from 'react-icons/md'
 import Tab from '../../../../reusable-ui/Tab';
 
 export default function AdminTabs({ isOpen, setIsOpen }) {
-    //state
+  //state
+  const [isAddSelescted, setIsAddSelescted] = useState(true)
+  const [isEditSelescted, setIsEditSelescted] = useState(false)
 
-    //comportement
 
 
-    //affichage
-    return (
-        <AdminTabsStyled>
-            <Tab
-                label=""
-                Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
-                onClick={() => setIsOpen(!isOpen)}
-                className={!isOpen ? "is-active" : ""}
-            />
-            <Tab
-                label="Ajouter un produit"
-                Icon={<AiOutlinePlus />}
-                onClick={() => setIsOpen(!isOpen)}
-                className={!isOpen ? "is-active" : ""}
-            />
-        </AdminTabsStyled>
-    )
+  //comportement
+
+  const toggleAdd = () => {
+    setIsOpen(true)
+    setIsAddSelescted(!isAddSelescted)
+    setIsEditSelescted(false)
+  }
+
+  const toggleEdit = () => {
+    setIsOpen(true)
+    setIsAddSelescted(false)
+    setIsEditSelescted(!isEditSelescted)
+  }
+
+
+  //affichage
+  return (
+    <AdminTabsStyled>
+      <Tab
+        label=""
+        Icon={isOpen ? <FiChevronDown /> : <FiChevronUp />}
+        onClick={() => setIsOpen(!isOpen)}
+        className={!isOpen ? "is-active" : ""}
+      />
+      <Tab
+        label="Ajouter un produit"
+        Icon={<AiOutlinePlus />}
+        onClick={toggleAdd}
+        className={isAddSelescted ? "is-active" : ""}
+      />
+      <Tab
+        label="Modifier un produit"
+        Icon={<MdModeEditOutline />}
+        onClick={toggleEdit}
+        className={isEditSelescted ? "is-active" : ""}
+      />
+    </AdminTabsStyled>
+  )
 }
 
 const AdminTabsStyled = styled.div`
