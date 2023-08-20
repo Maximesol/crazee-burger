@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function Tab({ Icon }) {
+export default function Tab({ Icon, onClick }) {
   return (
-    <TabsStyled>
+    <TabsStyled onClick={onClick}>
       <div className='icon'>{Icon}</div>
     </TabsStyled>
   )

@@ -3,10 +3,16 @@ import styled from 'styled-components';
 import { FiChevronDown } from "react-icons/fi"
 import Tab from '../../../../reusable-ui/Tab';
 
-export default function AdminTabs() {
+export default function AdminTabs({ isCollapse, setIsCollapse }) {
+    //state
+
+    //comportement
+
+
+    //affichage
     return (
         <AdminTabsStyled>
-            <Tab Icon={<FiChevronDown />} />
+            <Tab Icon={<FiChevronDown />} onClick={() => setIsCollapse(!isCollapse)} />
         </AdminTabsStyled>
     )
 }
