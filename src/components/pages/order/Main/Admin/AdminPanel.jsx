@@ -1,10 +1,19 @@
-import React from 'react'
+import { useContext } from 'react';
 import styled from 'styled-components';
+import AdminContext from "../../../../../contexts/AdminContext.jsx"
 
 export default function AdminPanel() {
+    //state
+    const { isAddSelected, isEditSelected } = useContext(AdminContext)
+
+    //comportements
+
+    //Affichage
     return (
         <AdminPanelStyled>
-            AdminPanel
+            {isAddSelected && "Ajouter un produit"}
+            {isEditSelected && "Modifier un produit"}
+
         </AdminPanelStyled>
     )
 }

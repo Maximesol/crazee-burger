@@ -13,10 +13,17 @@ export default function OrderPage() {
     //state
     const { username } = useParams()
     const [isAdmin, setIsAdmin] = useState(false)
+    const [isAddSelected, setIsAddSelected] = useState(true)
+    const [isEditSelected, setIsEditSelected] = useState(false)
+
 
     const adminContextValue = {
         isAdmin,
-        setIsAdmin
+        setIsAdmin,
+        isAddSelected,
+        setIsAddSelected,
+        isEditSelected,
+        setIsEditSelected,
     }
 
     //comportement

@@ -1,29 +1,31 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { AiOutlinePlus } from 'react-icons/ai'
 import { MdModeEditOutline } from 'react-icons/md'
 import Tab from '../../../../reusable-ui/Tab';
-
+import AdminContext from "../../../../../contexts/AdminContext.jsx"
 export default function AdminTabs({ isOpen, setIsOpen }) {
   //state
-  const [isAddSelescted, setIsAddSelescted] = useState(true)
-  const [isEditSelescted, setIsEditSelescted] = useState(false)
 
+  const { isAddSelected,
+    setIsAddSelected,
+    isEditSelected,
+    setIsEditSelected, } = useContext(AdminContext)
 
 
   //comportement
 
   const toggleAdd = () => {
     setIsOpen(true)
-    setIsAddSelescted(!isAddSelescted)
-    setIsEditSelescted(false)
+    setIsAddSelected(!isAddSelected)
+    setIsEditSelected(false)
   }
 
   const toggleEdit = () => {
     setIsOpen(true)
-    setIsAddSelescted(false)
-    setIsEditSelescted(!isEditSelescted)
+    setIsAddSelected(false)
+    setIsEditSelected(!isEditSelected)
   }
 
 
@@ -40,13 +42,13 @@ export default function AdminTabs({ isOpen, setIsOpen }) {
         label="Ajouter un produit"
         Icon={<AiOutlinePlus />}
         onClick={toggleAdd}
-        className={isAddSelescted ? "is-active" : ""}
+        className={isAddSelected ? "is-active" : ""}
       />
       <Tab
         label="Modifier un produit"
         Icon={<MdModeEditOutline />}
         onClick={toggleEdit}
-        className={isEditSelescted ? "is-active" : ""}
+        className={isEditSelected ? "is-active" : ""}
       />
     </AdminTabsStyled>
   )
