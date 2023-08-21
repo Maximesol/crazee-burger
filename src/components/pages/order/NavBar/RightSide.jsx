@@ -2,17 +2,18 @@ import React from 'react'
 import styled from 'styled-components';
 import ToggleButton from '../../../reusable-ui/ToggleButton';
 import Profile from "./Profile"
-import { useState } from 'react';
+import { useContext } from 'react';
 import { toast } from "react-toastify"
 import ToastAdmin from './ToastAdmin';
+import AdminContext from '../../../../contexts/AdminContext';
 
 
 
 
-export default function RightSide({ username }) {
+export default function RightSide() {
 
     //state
-    const [isAdmin, setIsAdmin] = useState(false)
+    const { isAdmin, setIsAdmin } = useContext(AdminContext)
 
     //comportement
     const handleToggle = () => {
@@ -43,7 +44,7 @@ export default function RightSide({ username }) {
                 labelIfChecked="DÉSACTIVER LE MODE ADMIN"
                 labelIfUnchecked="ACTIVER LE MODE ADMIN"
             />
-            <Profile username={username} />
+            <Profile />
         </RightSideStyled>
     )
 }
