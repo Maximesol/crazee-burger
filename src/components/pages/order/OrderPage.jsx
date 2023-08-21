@@ -16,6 +16,7 @@ export default function OrderPage() {
     const [isAddSelected, setIsAddSelected] = useState(true)
     const [isEditSelected, setIsEditSelected] = useState(false)
     const [currentTab, setCurrentTab] = useState("add")
+    const [isOpen, setIsOpen] = useState(true)
 
 
     const adminContextValue = {
@@ -27,6 +28,8 @@ export default function OrderPage() {
         setIsEditSelected,
         currentTab,
         setCurrentTab,
+        isOpen,
+        setIsOpen,
     }
 
     //comportement

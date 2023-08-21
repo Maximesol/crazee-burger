@@ -6,7 +6,7 @@ import { MdModeEditOutline } from 'react-icons/md'
 import Tab from '../../../../reusable-ui/Tab';
 import AdminContext from "../../../../../contexts/AdminContext.jsx"
 
-export default function AdminTabs({ isOpen, setIsOpen }) {
+export default function AdminTabs() {
   //state
 
   const { isAddSelected,
@@ -14,7 +14,9 @@ export default function AdminTabs({ isOpen, setIsOpen }) {
     isEditSelected,
     setIsEditSelected,
     currentTab,
-    setCurrentTab, } = useContext(AdminContext)
+    setCurrentTab,
+    isOpen,
+    setIsOpen, } = useContext(AdminContext)
 
 
   //comportement

@@ -1,12 +1,13 @@
 import styled from "styled-components"
 import AdminTabs from "./AdminTabs";
 import AdminPanel from "./AdminPanel";
-import { useState } from 'react';
+import { useContext } from 'react';
+import AdminContext from "../../../../../contexts/AdminContext";
 
 export default function Admin() {
 
     //state 
-    const [isOpen, setIsOpen] = useState(true)
+    const { isOpen, setIsOpen } = useContext(AdminContext)
 
     //comportement
 
