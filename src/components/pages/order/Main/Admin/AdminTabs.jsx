@@ -1,18 +1,14 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
-import { AiOutlinePlus } from 'react-icons/ai'
-import { MdModeEditOutline } from 'react-icons/md'
 import Tab from '../../../../reusable-ui/Tab';
 import AdminContext from "../../../../../contexts/AdminContext.jsx"
+import { getTabsConfig } from './getTabsConfig';
 
 export default function AdminTabs() {
   //state
 
-  const { isAddSelected,
-    setIsAddSelected,
-    isEditSelected,
-    setIsEditSelected,
+  const {
     currentTab,
     setCurrentTab,
     isOpen,
@@ -26,6 +22,8 @@ export default function AdminTabs() {
     setCurrentTab(tabSelected)
   }
 
+  const tabs = getTabsConfig(currentTab)
+
 
   //affichage
   return (
@@ -36,18 +34,19 @@ export default function AdminTabs() {
         onClick={() => setIsOpen(!isOpen)}
         className={!isOpen ? "is-active" : ""}
       />
-      <Tab
-        label="Ajouter un produit"
-        Icon={<AiOutlinePlus />}
-        onClick={() => { selectTab("add") }}
-        className={currentTab === "add" ? "is-active" : ""}
-      />
-      <Tab
-        label="Modifier un produit"
-        Icon={<MdModeEditOutline />}
-        onClick={() => { selectTab("edit") }}
-        className={currentTab === "edit" ? "is-active" : ""}
-      />
+
+      {tabs.map((tab) => (
+
+        <Tab
+          key={tab.index}
+          label={tab.label}
+          Icon={tab.Icon}
+          onClick={() => selectTab(tab.index)}
+          className={currentTab === tab.index ? "is-active" : ""}
+        />
+
+      ))}
+
     </AdminTabsStyled>
   )
 }
