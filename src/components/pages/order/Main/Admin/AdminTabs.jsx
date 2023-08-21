@@ -5,27 +5,23 @@ import { AiOutlinePlus } from 'react-icons/ai'
 import { MdModeEditOutline } from 'react-icons/md'
 import Tab from '../../../../reusable-ui/Tab';
 import AdminContext from "../../../../../contexts/AdminContext.jsx"
+
 export default function AdminTabs({ isOpen, setIsOpen }) {
   //state
 
   const { isAddSelected,
     setIsAddSelected,
     isEditSelected,
-    setIsEditSelected, } = useContext(AdminContext)
+    setIsEditSelected,
+    currentTab,
+    setCurrentTab, } = useContext(AdminContext)
 
 
   //comportement
 
-  const toggleAdd = () => {
+  const selectTab = (tabSelected) => {
     setIsOpen(true)
-    setIsAddSelected(!isAddSelected)
-    setIsEditSelected(false)
-  }
-
-  const toggleEdit = () => {
-    setIsOpen(true)
-    setIsAddSelected(false)
-    setIsEditSelected(!isEditSelected)
+    setCurrentTab(tabSelected)
   }
 
 
@@ -41,14 +37,14 @@ export default function AdminTabs({ isOpen, setIsOpen }) {
       <Tab
         label="Ajouter un produit"
         Icon={<AiOutlinePlus />}
-        onClick={toggleAdd}
-        className={isAddSelected ? "is-active" : ""}
+        onClick={() => { selectTab("add") }}
+        className={currentTab === "add" ? "is-active" : ""}
       />
       <Tab
         label="Modifier un produit"
         Icon={<MdModeEditOutline />}
-        onClick={toggleEdit}
-        className={isEditSelected ? "is-active" : ""}
+        onClick={() => { selectTab("edit") }}
+        className={currentTab === "edit" ? "is-active" : ""}
       />
     </AdminTabsStyled>
   )

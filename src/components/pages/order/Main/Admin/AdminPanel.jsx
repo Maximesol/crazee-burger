@@ -4,15 +4,15 @@ import AdminContext from "../../../../../contexts/AdminContext.jsx"
 
 export default function AdminPanel() {
     //state
-    const { isAddSelected, isEditSelected } = useContext(AdminContext)
+    const { isAddSelected, isEditSelected, currentTab, setCurrentTab } = useContext(AdminContext)
 
     //comportements
 
     //Affichage
     return (
         <AdminPanelStyled>
-            {isAddSelected && "Ajouter un produit"}
-            {isEditSelected && "Modifier un produit"}
+            {currentTab === "add" && "Ajouter un produit"}
+            {currentTab === "edit" && "Modifier un produit"}
 
         </AdminPanelStyled>
     )
