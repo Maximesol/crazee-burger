@@ -7,14 +7,14 @@ import AdminContext from "../../../../../contexts/AdminContext";
 export default function Admin() {
 
     //state 
-    const { isOpen, setIsOpen } = useContext(AdminContext)
+    const { isOpen } = useContext(AdminContext)
 
     //comportement
 
     //affichage
     return (
         <AdminStyled>
-            <AdminTabs isOpen={isOpen} setIsOpen={setIsOpen} />
+            <AdminTabs />
             {isOpen && <AdminPanel />}
         </AdminStyled>
     )

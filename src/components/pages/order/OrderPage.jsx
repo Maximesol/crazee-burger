@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom"
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
@@ -11,10 +10,7 @@ export default function OrderPage() {
 
 
     //state
-    const { username } = useParams()
     const [isAdmin, setIsAdmin] = useState(false)
-    const [isAddSelected, setIsAddSelected] = useState(true)
-    const [isEditSelected, setIsEditSelected] = useState(false)
     const [currentTab, setCurrentTab] = useState("add")
     const [isOpen, setIsOpen] = useState(true)
 
@@ -22,10 +18,6 @@ export default function OrderPage() {
     const adminContextValue = {
         isAdmin,
         setIsAdmin,
-        isAddSelected,
-        setIsAddSelected,
-        isEditSelected,
-        setIsEditSelected,
         currentTab,
         setCurrentTab,
         isOpen,
@@ -41,7 +33,7 @@ export default function OrderPage() {
         <AdminContext.Provider value={adminContextValue}>
             <OrderPageStyled>
                 <div className="container">
-                    <NavBar username={username} />
+                    <NavBar />
                     <Main />
                 </div>
             </OrderPageStyled>

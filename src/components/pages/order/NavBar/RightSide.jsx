@@ -10,7 +10,7 @@ import AdminContext from '../../../../contexts/AdminContext';
 
 
 
-export default function RightSide({ username }) {
+export default function RightSide() {
 
     //state
     const { isAdmin, setIsAdmin } = useContext(AdminContext)
@@ -44,7 +44,7 @@ export default function RightSide({ username }) {
                 labelIfChecked="DÉSACTIVER LE MODE ADMIN"
                 labelIfUnchecked="ACTIVER LE MODE ADMIN"
             />
-            <Profile username={username} />
+            <Profile />
         </RightSideStyled>
     )
 }

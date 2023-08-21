@@ -4,11 +4,11 @@ import LeftSide from './LeftSide';
 import RightSide from './RightSide';
 import { theme } from '../../../../theme';
 
-export default function NavBar({ username }) {
+export default function NavBar() {
     return (
         <NavBarStyled>
             <LeftSide />
-            <RightSide username={username} />
+            <RightSide />
         </NavBarStyled>
     )
 }

@@ -4,7 +4,7 @@ import AdminContext from "../../../../../contexts/AdminContext.jsx"
 
 export default function AdminPanel() {
     //state
-    const { isAddSelected, isEditSelected, currentTab, setCurrentTab } = useContext(AdminContext)
+    const { currentTab } = useContext(AdminContext)
 
     //comportements
 

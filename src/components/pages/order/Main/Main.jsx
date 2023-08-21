@@ -9,7 +9,7 @@ import Menu from './Menu';
 export default function Main() {
 
     //state
-    const { isAdmin, setIsAdmin } = useContext(AdminContext)
+    const { isAdmin } = useContext(AdminContext)
 
 
     //comportements
