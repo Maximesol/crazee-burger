@@ -7,4 +7,6 @@ export default createContext({
     setCurrentTab: () => { },
     isOpen: false,
     setIsOpen: () => { },
+    menu: [],
+    handleAdd: () => { },
 })

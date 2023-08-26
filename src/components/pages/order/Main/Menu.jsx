@@ -1,16 +1,23 @@
-import React from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components';
+import AdminContext from '../../../../contexts/AdminContext';
 import Card from '../../../reusable-ui/Card';
-import { useState } from 'react';
-import { fakeMenu2 } from '../../../../fakeData/fakeMenu';
+
+
 
 
 export default function Menu() {
   // state
 
-  const [menu, setMenu] = useState(fakeMenu2)
+  const { menu } = useContext(AdminContext)
+
+  //const [menu, setMenu] = useState(fakeMenu2)
 
   //comportement
+
+
+
+
 
 
   {

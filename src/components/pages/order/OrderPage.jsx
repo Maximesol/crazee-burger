@@ -4,6 +4,7 @@ import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import NavBar from "./NavBar/NavBar";
 import AdminContext from "../../../contexts/AdminContext";
+import { fakeMenu2 } from "../../../fakeData/fakeMenu"
 
 
 export default function OrderPage() {
@@ -13,6 +14,22 @@ export default function OrderPage() {
     const [isAdmin, setIsAdmin] = useState(false)
     const [currentTab, setCurrentTab] = useState("add")
     const [isOpen, setIsOpen] = useState(true)
+    const [menu, setMenu] = useState(fakeMenu2)
+
+
+
+    const handleAdd = (newProduct) => {
+        //1 copie du state
+
+        const menuCopy = [...menu]
+
+        //2 manipuler la copie du state
+        const menuCopyUpdated = [newProduct, ...menu]
+
+        // setteur
+
+        setMenu(menuCopyUpdated)
+    }
 
 
     const adminContextValue = {
@@ -22,6 +39,8 @@ export default function OrderPage() {
         setCurrentTab,
         isOpen,
         setIsOpen,
+        menu,
+        handleAdd
     }
 
     //comportement
