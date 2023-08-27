@@ -1,30 +1,38 @@
 import styled from 'styled-components';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import AdminContext from '../../../../../contexts/AdminContext';
 
 
-
+const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: 0,
+}
 
 export default function AddForm() {
     // state
     const { handleAdd } = useContext(AdminContext)
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+
 
     // comportements 
 
-    const newProduct = {
-        id: new Date().getTime(),
-        title: "New Product",
-        imageSource: "/images/burger2.png",
-        price: 10
-    }
-
-
-
     const handleSubmit = (event) => {
         event.preventDefault()
-        handleAdd(newProduct)
+        const newProductToAdd = {
+            ...newProduct,
+            id: crypto.randomUUID()
+        }
+        handleAdd(newProductToAdd)
     }
 
+    const handleChange = (event) => {
+        const { name, value } = event.target
+        setNewProduct({ ...newProduct, [name]: value })
+
+    }
+    //affichage
 
     return (
         <AddFormStyled onSubmit={handleSubmit}>
@@ -34,14 +42,14 @@ export default function AddForm() {
             <div className='div-input'>
                 <div className="input-nom">
 
-                    <input placeholder='Nom du produit (ex: Super Burger)' />
+                    <input name="title" value={newProduct.title} placeholder='Nom du produit (ex: Super Burger)' onChange={handleChange} />
                 </div>
 
                 <div className="input-lien">
-                    <input placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-prduit.png)" />
+                    <input name="imageSource" value={newProduct.imageSource} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-prduit.png)" onChange={handleChange} />
                 </div>
                 <div className="input-prix">
-                    <input placeholder='Prix' />
+                    <input name="price" value={newProduct.price} placeholder='Prix' onChange={handleChange} />
                 </div>
             </div>
             <button className='button'>Ajouter un nouveau produit au menu</button>
