@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AdminContext from '../../../../contexts/AdminContext';
 import Card from '../../../reusable-ui/Card';
 
-
+const COMING_SOON = "/public/images/coming-soon.png"
 
 
 export default function Menu() {
@@ -31,7 +31,7 @@ export default function Menu() {
         return <Card
           key={id}
           title={title}
-          imageSource={imageSource}
+          imageSource={imageSource ? imageSource : COMING_SOON}
           price={price}></Card>
       })}
 

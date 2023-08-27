@@ -37,7 +37,9 @@ export default function AddForm() {
     return (
         <AddFormStyled onSubmit={handleSubmit}>
             <div className='div-image'>
-
+                {newProduct.imageSource ?
+                    <img className='preview' src={newProduct.imageSource || ""} alt="Product" /> :
+                    <div>Aucune image</div>}
             </div>
             <div className='div-input'>
                 <div className="input-nom">
@@ -71,6 +73,13 @@ width: 70%;
     background: #F5F5F7;
 }
 
+.preview {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
 input{
     background: #F5F5F7;
     border: none;
@@ -85,6 +94,10 @@ input::placeholder {
 .div-image{
     border: 5px solid black;
     grid-area: 1 / 1 / 4 / 2;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    
 }
 .div-input{
     display: grid;
