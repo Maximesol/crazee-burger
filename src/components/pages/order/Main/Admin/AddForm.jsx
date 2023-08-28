@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import AdminContext from '../../../../../contexts/AdminContext';
+import { FiCheck } from 'react-icons/fi'
 
 
 const EMPTY_PRODUCT = {
@@ -14,7 +15,7 @@ export default function AddForm() {
     // state
     const { handleAdd } = useContext(AdminContext)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-
+    const [productAdded, setProductAdded] = useState(false)
 
     // comportements 
 
@@ -26,6 +27,10 @@ export default function AddForm() {
         }
         handleAdd(newProductToAdd)
         setNewProduct(EMPTY_PRODUCT)
+        setProductAdded(true)
+        setTimeout(() => {
+            setProductAdded(false)
+        }, 2000)
     }
 
     const handleChange = (event) => {
@@ -56,6 +61,13 @@ export default function AddForm() {
                 </div>
             </div>
             <button className='button'>Ajouter un nouveau produit au menu</button>
+            <div className='added-product'>
+                {productAdded ?
+                    <div>
+                        <FiCheck className='fi-check' />
+                        <span>Ajouté avec succès !</span>
+                    </div> : ""}
+            </div>
         </AddFormStyled>
     )
 }
@@ -72,6 +84,10 @@ width: 70%;
     justify-content: space-between;
     border: 2px solid black;
     background: #F5F5F7;
+}
+.fi-check{
+    width: 18px;
+    height: 18px;
 }
 
 .preview {
@@ -114,6 +130,21 @@ input::placeholder {
     border:5px solid green;
     grid-area: 4 / 2 / 5 / 3;
     width: 50%;
+}
+
+.added-product {
+    border: 2px solid purple;
+    grid-area: 4 / 2 / 5 / 4;
+    width: 50%;
+    justify-self: end;
+    color: #60BD4F;
+    font-family: Open Sans;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    
 }
   
 `;
