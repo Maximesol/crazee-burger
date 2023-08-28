@@ -41,6 +41,10 @@ export default function OrderPage() {
 
     }
 
+    const resetMenu = () => {
+        setMenu(fakeMenu2)
+    }
+
 
     const adminContextValue = {
         isAdmin,
@@ -51,7 +55,8 @@ export default function OrderPage() {
         setIsOpen,
         menu,
         handleAdd,
-        handleDelete
+        handleDelete,
+        resetMenu
     }
 
     //comportement

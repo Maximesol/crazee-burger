@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import AdminContext from '../../../../contexts/AdminContext';
 import { theme } from '../../../../theme';
 import Admin from './Admin/Admin';
-import Menu from './Menu';
+import Menu from './Admin/Menu/Menu';
 
 
 export default function Main() {

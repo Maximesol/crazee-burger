@@ -1,7 +1,9 @@
 import { useContext } from 'react'
 import styled from 'styled-components';
-import AdminContext from '../../../../contexts/AdminContext';
-import Card from '../../../reusable-ui/Card';
+import AdminContext from '../../../../../../contexts/AdminContext';
+import Card from '../../../../../reusable-ui/Card';
+import EmptyMenuAdmin from './EmptyMenuAdmin';
+import EmptyMenuClient from './EmptyMenuClient';
 
 const COMING_SOON = "/public/images/coming-soon.png"
 
@@ -9,7 +11,7 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu } = useContext(AdminContext)
+  const { menu, isAdmin } = useContext(AdminContext)
 
   //const [menu, setMenu] = useState(fakeMenu2)
 
@@ -21,6 +23,11 @@ export default function Menu() {
   }
 
   // affichage
+  if (menu.length === 0) {
+    if (isAdmin) return <EmptyMenuAdmin />
+    return <EmptyMenuClient />
+  }
+
   return (
     <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => {
