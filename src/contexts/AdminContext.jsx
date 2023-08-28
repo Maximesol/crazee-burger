@@ -9,4 +9,5 @@ export default createContext({
     setIsOpen: () => { },
     menu: [],
     handleAdd: () => { },
+    handleDelete: () => { },
 })

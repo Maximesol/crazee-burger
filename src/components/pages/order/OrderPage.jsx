@@ -31,6 +31,16 @@ export default function OrderPage() {
         setMenu(menuCopyUpdated)
     }
 
+    const handleDelete = (productToDelete) => {
+
+        const menuCopy = [...menu]
+
+        const menuCopyUpdated = menuCopy.filter(product => product.title !== productToDelete)
+
+        setMenu(menuCopyUpdated)
+
+    }
+
 
     const adminContextValue = {
         isAdmin,
@@ -40,7 +50,8 @@ export default function OrderPage() {
         isOpen,
         setIsOpen,
         menu,
-        handleAdd
+        handleAdd,
+        handleDelete
     }
 
     //comportement
