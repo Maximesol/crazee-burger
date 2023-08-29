@@ -92,9 +92,9 @@ export default function AddForm() {
                 version='success' />
             <div className='added-product'>
                 {productAdded ?
-                    <div>
-                        <FiCheck className='fi-check' />
-                        <span>Ajouté avec succès !</span>
+                    <div className='submit-message'>
+                        <FiCheck className='icon' />
+                        <span className='message'>Ajouté avec succès !</span>
                     </div> : ""}
             </div>
         </AddFormStyled>
@@ -112,11 +112,27 @@ grid-column-gap: 20px;
 grid-row-gap: 8px;
 padding-left: 70px;
 
+.submit-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
 
+.icon{
+    color: ${theme.colors.success};
+    margin-left: 10px;
+    width: 1em;
+    height: 1em;
+    border: 1px solid ${theme.colors.success};
+    border-radius: 50%;
+    vertical-align: middle;
+}
 
-.fi-check{
-    width: 18px;
-    height: 18px;
+.message {
+    margin-left: 5px;
+    font-size: ${theme.fonts.P0};
+    color: ${theme.colors.success};
 }
 
 .preview {
