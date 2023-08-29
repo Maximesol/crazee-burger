@@ -58,13 +58,18 @@ const InputStyled = styled.div`
     align-items: center;
   }
 
-  ${(props) => {
+  ${'' /* ${(props) => {
         if (props.version === "normal") return extraStyleNormal
         if (props.version === "minimalist") return extraStyleMinimalist
 
-    }}
+    }} */}
+
+    ${({ version }) => extraStyle[version]}
+
 
 `;
+
+
 const extraStyleNormal = css`
 background-color: ${theme.colors.white};
 color: ${theme.colors.greySemiDark};
@@ -95,3 +100,7 @@ input {
 }
 
 `
+const extraStyle = {
+    normal: extraStyleNormal,
+    minimalist: extraStyleMinimalist
+}
