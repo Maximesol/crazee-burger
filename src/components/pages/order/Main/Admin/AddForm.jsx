@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import AdminContext from '../../../../../contexts/AdminContext';
-import { FiCheck } from 'react-icons/fi'
 import { FaHamburger } from 'react-icons/fa'
 import { BsFillCameraFill } from 'react-icons/bs'
 import { MdOutlineEuro } from 'react-icons/md'
-import { theme } from '../../../../../theme/index';
 import TextInput from '../../../../reusable-ui/TextInput';
 import PrimaryButton from '../../../../reusable-ui/PrimaryButton';
 import ImagePreview from './ImagePreview';
+import SubmitMessage from './SubmitMessage';
 
 
 export const EMPTY_PRODUCT = {
@@ -48,6 +47,7 @@ export default function AddForm() {
     //affichage
 
     return (
+
         <AddFormStyled onSubmit={handleSubmit}>
 
             <ImagePreview />
@@ -89,12 +89,11 @@ export default function AddForm() {
                 className='button'
                 label='Ajouter un nouveau produit au menu'
                 version='success' />
+
             <div className='added-product'>
                 {productAdded ?
-                    <div className='submit-message'>
-                        <FiCheck className='icon' />
-                        <span className='message'>Ajouté avec succès !</span>
-                    </div> : ""}
+                    <SubmitMessage />
+                    : ""}
             </div>
         </AddFormStyled>
     )
@@ -111,28 +110,6 @@ grid-column-gap: 20px;
 grid-row-gap: 8px;
 padding-left: 70px;
 
-.submit-message{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 5px;
-}
-
-.icon{
-    color: ${theme.colors.success};
-    margin-left: 10px;
-    width: 1em;
-    height: 1em;
-    border: 1px solid ${theme.colors.success};
-    border-radius: 50%;
-    vertical-align: middle;
-}
-
-.message {
-    margin-left: 5px;
-    font-size: ${theme.fonts.P0};
-    color: ${theme.colors.success};
-}
 
 input{
     background: #F5F5F7;
@@ -152,9 +129,7 @@ input::placeholder {
     gap: 5px;
     max-width: 100%;
     grid-row-gap: 8px;
-    
-    
-    
+       
 }
 .button{
     
