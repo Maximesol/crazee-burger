@@ -7,6 +7,7 @@ import { BsFillCameraFill } from 'react-icons/bs'
 import { MdOutlineEuro } from 'react-icons/md'
 import { theme } from '../../../../../theme/index';
 import TextInput from '../../../../reusable-ui/TextInput';
+import PrimaryButton from '../../../../reusable-ui/PrimaryButton';
 
 
 const EMPTY_PRODUCT = {
@@ -85,7 +86,10 @@ export default function AddForm() {
                 />
 
             </div>
-            <button className='button'>Ajouter un nouveau produit au menu</button>
+            <PrimaryButton
+                className='button'
+                label='Ajouter un nouveau produit au menu'
+                version='success' />
             <div className='added-product'>
                 {productAdded ?
                     <div>
@@ -163,11 +167,14 @@ input::placeholder {
     grid-row-gap: 8px;
     
     
+    
 }
 .button{
     
     grid-area: 4 / 2 / 5 / 3;
     width: 50%;
+    position: relative;
+    top: 10px;
 }
 
 .added-product {
@@ -181,8 +188,9 @@ input::placeholder {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-
-    
+    position: relative;
+    top: 15px;
+   
 }
   
 `;
