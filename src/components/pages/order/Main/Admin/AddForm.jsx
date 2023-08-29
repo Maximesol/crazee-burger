@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import { useContext, useState } from 'react';
 import AdminContext from '../../../../../contexts/AdminContext';
-import { FaHamburger } from 'react-icons/fa'
-import { BsFillCameraFill } from 'react-icons/bs'
-import { MdOutlineEuro } from 'react-icons/md'
 import TextInput from '../../../../reusable-ui/TextInput';
 import PrimaryButton from '../../../../reusable-ui/PrimaryButton';
 import ImagePreview from './ImagePreview';
 import SubmitMessage from './SubmitMessage';
+import { getinputTextsConfig } from './inputTexts.Config';
 
 
 export const EMPTY_PRODUCT = {
@@ -44,6 +42,9 @@ export default function AddForm() {
         setNewProduct({ ...newProduct, [name]: value })
 
     }
+
+    const inputTexts = getinputTextsConfig(newProduct)
+
     //affichage
 
     return (
@@ -54,34 +55,16 @@ export default function AddForm() {
 
             <div className='div-input'>
 
-                <TextInput
-                    name="title"
-                    value={newProduct.title}
-                    placeholder='Nom du produit (ex: Super Burger)'
-                    onChange={handleChange}
-                    Icon={<FaHamburger />}
-                    version="minimalist" />
+                {inputTexts.map((input => {
+                    return (
+                        <TextInput
+                            {...input}
+                            onChange={handleChange}
+                            version="minimalist"
+                        />
+                    )
+                }))}
 
-
-
-                <TextInput
-                    name="imageSource"
-                    value={newProduct.imageSource}
-                    placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-prduit.png)"
-                    onChange={handleChange}
-                    Icon={<BsFillCameraFill />}
-                    version="minimalist"
-                />
-
-
-                <TextInput
-                    name="price"
-                    value={newProduct.price}
-                    placeholder='Prix'
-                    onChange={handleChange}
-                    Icon={<MdOutlineEuro />}
-                    version="minimalist"
-                />
 
             </div>
 
