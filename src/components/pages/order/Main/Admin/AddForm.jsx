@@ -8,9 +8,10 @@ import { MdOutlineEuro } from 'react-icons/md'
 import { theme } from '../../../../../theme/index';
 import TextInput from '../../../../reusable-ui/TextInput';
 import PrimaryButton from '../../../../reusable-ui/PrimaryButton';
+import ImagePreview from './ImagePreview';
 
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
     id: "",
     title: "",
     imageSource: "",
@@ -20,7 +21,7 @@ const EMPTY_PRODUCT = {
 export default function AddForm() {
     // state
     const { handleAdd } = useContext(AdminContext)
-    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const { newProduct, setNewProduct } = useContext(AdminContext)
     const [productAdded, setProductAdded] = useState(false)
 
     // comportements 
@@ -48,13 +49,10 @@ export default function AddForm() {
 
     return (
         <AddFormStyled onSubmit={handleSubmit}>
-            <div className='div-image'>
-                {newProduct.imageSource ?
-                    <img className='preview' src={newProduct.imageSource || ""} alt="Product" /> :
-                    <div className='empty-image'>Aucune image</div>}
-            </div>
-            <div className='div-input'>
 
+            <ImagePreview />
+
+            <div className='div-input'>
 
                 <TextInput
                     name="title"
@@ -86,6 +84,7 @@ export default function AddForm() {
                 />
 
             </div>
+
             <PrimaryButton
                 className='button'
                 label='Ajouter un nouveau produit au menu'
@@ -135,26 +134,6 @@ padding-left: 70px;
     color: ${theme.colors.success};
 }
 
-.preview {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
-}
-
-.empty-image{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid ${theme.colors.greyLight};
-    line-height: 1.5;
-    color: ${theme.colors.greySemiDark};
-    border-radius: ${theme.borderRadius.round};
-
-}
-
 input{
     background: #F5F5F7;
     border: none;
@@ -165,14 +144,6 @@ input::placeholder {
     color: #A7A8AD; 
 }
 
-.div-image{
-    
-    grid-area: 1 / 1 / 4 / 2;
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    
-}
 .div-input{
     display: grid;
     grid-template-columns: 1fr;
