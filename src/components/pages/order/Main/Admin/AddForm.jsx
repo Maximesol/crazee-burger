@@ -58,6 +58,7 @@ export default function AddForm() {
                 {inputTexts.map((input => {
                     return (
                         <TextInput
+                            key={input.id}
                             {...input}
                             onChange={handleChange}
                             version="minimalist"
