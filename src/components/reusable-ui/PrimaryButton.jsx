@@ -11,7 +11,10 @@ export default function PrimaryButton({
     onClick
 }) {
     return (
-        <ButtonStyled className={className} version={version} onClick={onClick}>
+        <ButtonStyled
+            className={className}
+            version={version}
+            onClick={onClick}>
             <span>{label}</span>
             {Icon && Icon}
 
@@ -20,12 +23,7 @@ export default function PrimaryButton({
 }
 
 const ButtonStyled = styled.button`
-    ${(props) => props.version === 'default' && extraStyleDefault}
-    ${(props) => props.version === 'success' && extraStyleSuccess}
-
-
-    
-
+    ${({ version }) => extraStyle[version]}
   
 `;
 
@@ -69,3 +67,8 @@ const extraStyleSuccess = css`
         border: 1px solid ${theme.colors.success};
     }
 `
+
+const extraStyle = {
+    default: extraStyleDefault,
+    success: extraStyleSuccess
+}

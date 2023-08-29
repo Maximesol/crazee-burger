@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import { styled, css } from "styled-components";
 import { theme } from "../../theme";
 
 
@@ -11,7 +11,8 @@ export default function TextInput({
     version = "normal",
     ...extraProps }) {
     return (
-        <InputStyled version={version}>
+        <InputStyled
+            version={version}>
             {Icon}
             <input
                 value={value}
@@ -36,8 +37,7 @@ const InputStyled = styled.div`
     background: ${theme.colors.white};
     color: ${theme.colors.greyBlue};
     font-size: 16px;
-    width: 100 %;
-    
+    width: 400px;
 
     input {
     border: none;
@@ -66,10 +66,9 @@ const InputStyled = styled.div`
 
     ${({ version }) => extraStyle[version]}
 
+ 
 
 `;
-
-
 const extraStyleNormal = css`
 background-color: ${theme.colors.white};
 color: ${theme.colors.greySemiDark};
@@ -89,6 +88,7 @@ const extraStyleMinimalist = css`
 background-color: ${theme.colors.background_white};
 padding: 8px 16px;
 color: ${theme.colors.greyBlue};
+width: 100%;
 
 input {
     background: ${theme.colors.background_white};
