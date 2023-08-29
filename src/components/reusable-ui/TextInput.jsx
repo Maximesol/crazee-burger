@@ -36,7 +36,7 @@ const InputStyled = styled.div`
     background: ${theme.colors.white};
     color: ${theme.colors.greyBlue};
     font-size: 16px;
-    width: 400px;
+    width: 100 %;
     
 
     input {

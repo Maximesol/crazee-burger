@@ -13,7 +13,7 @@ const EMPTY_PRODUCT = {
     id: "",
     title: "",
     imageSource: "",
-    price: 0,
+    price: ""
 }
 
 export default function AddForm() {
@@ -99,13 +99,14 @@ export default function AddForm() {
 
 const AddFormStyled = styled.form`
 display:grid;
-box-sizing:border-box;
+box-sizing: border-box;
 grid-template-columns: 1fr 3fr;
 grid-template-rows: repeat(4, 1fr);
-height: 100%;
-width: 70%;
+width: 880px;
+height: 160px;
 grid-column-gap: 20px;
 grid-row-gap: 8px;
+padding-left: 70px;
 
 
 
@@ -138,10 +139,7 @@ input{
     background: #F5F5F7;
     border: none;
     width: 100%;
-    
-    
-    
-    
+  
 }
 input::placeholder {
     color: #A7A8AD; 
@@ -162,6 +160,7 @@ input::placeholder {
     grid-area: 1 / 2 / 4 / 4;
     gap: 5px;
     max-width: 100%;
+    grid-row-gap: 8px;
     
     
 }
