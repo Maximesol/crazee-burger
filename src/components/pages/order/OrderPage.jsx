@@ -24,7 +24,7 @@ export default function OrderPage() {
         const menuCopy = [...menu]
 
         //2 manipuler la copie du state
-        const menuCopyUpdated = [newProduct, ...menu]
+        const menuCopyUpdated = [newProduct, ...menuCopy]
 
         // setteur
 
@@ -35,7 +35,7 @@ export default function OrderPage() {
 
         const menuCopy = [...menu]
 
-        const menuCopyUpdated = menuCopy.filter(product => product.title !== productToDelete)
+        const menuCopyUpdated = menuCopy.filter(product => product.id !== productToDelete)
 
         setMenu(menuCopyUpdated)
 

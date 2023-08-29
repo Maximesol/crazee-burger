@@ -11,7 +11,7 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu, isAdmin } = useContext(AdminContext)
+  const { menu, isAdmin, handleDelete } = useContext(AdminContext)
 
   //const [menu, setMenu] = useState(fakeMenu2)
 
@@ -35,7 +35,9 @@ export default function Menu() {
           key={id}
           title={title}
           imageSource={imageSource ? imageSource : COMING_SOON}
-          price={price}></Card>
+          price={price}
+          onDelete={() => handleDelete(id)}
+        ></Card>
       })}
 
     </MenuStyled>
