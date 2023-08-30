@@ -3,17 +3,29 @@ import styled from 'styled-components';
 import { formatPrice } from '../../utils/maths';
 import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
+import { useContext } from 'react';
+import AdminContext from '../../contexts/AdminContext';
+import { TiDelete } from 'react-icons/ti'
 
 
 
-export default function Card({ imageSource, title, price }) {
+
+export default function Card({ imageSource, title, price, onDelete }) {
+  // state
+  const { isAdmin } = useContext(AdminContext)
+
+  // comportements
 
 
 
 
+
+  // affichage
   return (
-    <CardStyled>
-
+    <CardStyled className={isAdmin ? 'isAdmin' : ''}>
+      {isAdmin && <button className='delete-button' onClick={onDelete}>
+        <TiDelete className='icon' />
+      </button>}
       <img src={imageSource} className="image" />
       <div className='info'>
         <div className='title'>
@@ -37,7 +49,9 @@ export default function Card({ imageSource, title, price }) {
 
 
 const CardStyled = styled.div`
-  
+
+
+ 
 display: grid;
 width: 240px;
 height: 330px;
@@ -47,13 +61,37 @@ background: ${theme.colors.white};
 box-sizing: border-box;
 box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 border-radius: ${theme.borderRadius.extraRound};
+position: relative;
 
+.delete-button{
+  border: 1px solid red;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  color: #FFA01B;
+  z-index: 2;
+  padding: 0;
+  border: none;
+  background: none;
+    &:hover {
+      color: rgb(204, 71, 61)
 
+    }
+}
 
+.icon{
+    display: flex;
+    width: 30px;
+    height: 30px;
+  }
 
 
 .title {
-        margin: auto 0;
+      margin: auto 0;
+      padding-bottom: 10px;
       font-size: ${theme.fonts.P4};
       position: relative;
       bottom: 10px;
@@ -115,7 +153,7 @@ border-radius: ${theme.borderRadius.extraRound};
     cursor: pointer;
     padding: 12px;
     width: 95px;
-height: 38px;
+    height: 38px;
   }
 
 

@@ -1,10 +1,20 @@
 import styled from "styled-components";
-import { theme } from "../../theme";
+import { theme } from '../../theme/index';
+import { css } from "styled-components";
 
 
-export default function PrimaryButton({ Icon, label, className }) {
+export default function PrimaryButton({
+    Icon,
+    label,
+    className,
+    version = 'default',
+    onClick
+}) {
     return (
-        <ButtonStyled className={className}>
+        <ButtonStyled
+            className={className}
+            version={version}
+            onClick={onClick}>
             <span>{label}</span>
             {Icon && Icon}
 
@@ -13,7 +23,11 @@ export default function PrimaryButton({ Icon, label, className }) {
 }
 
 const ButtonStyled = styled.button`
+    ${({ version }) => extraStyle[version]}
+  
+`;
 
+const extraStyleDefault = css`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,8 +44,31 @@ const ButtonStyled = styled.button`
 
     &:hover {
         background: ${theme.colors.white};
-        color: #FF9F1B; /* Changer la couleur du texte si nécessaire */
+        color: #FF9F1B; 
     }
+`
 
-  
-`;
+const extraStyleSuccess = css`
+    cursor: pointer;
+    color: ${theme.colors.white};
+    background: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+    border-radius: ${theme.borderRadius.round};
+    height: 35px;
+    font-weight: ${theme.weights.semiBold};
+    :hover {
+        background: ${theme.colors.white};
+        color: ${theme.colors.success};
+        border: 1px solid ${theme.colors.success};
+    }
+    :active {
+        color: ${theme.colors.white};
+        background: ${theme.colors.success};
+        border: 1px solid ${theme.colors.success};
+    }
+`
+
+const extraStyle = {
+    default: extraStyleDefault,
+    success: extraStyleSuccess
+}
