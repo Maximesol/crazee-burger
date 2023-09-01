@@ -47,7 +47,7 @@ export default function AddForm() {
 
         <AddFormStyled onSubmit={handleSubmit}>
 
-            <ImagePreview />
+            <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
 
             <div className='div-input'>
 
