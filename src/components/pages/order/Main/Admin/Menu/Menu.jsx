@@ -11,15 +11,16 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete } = useContext(AdminContext)
+  const { menu, isAdmin, handleDelete, setProductSelected } = useContext(AdminContext)
 
   //const [menu, setMenu] = useState(fakeMenu2)
 
   //comportement
-
-
-  {
-
+  const handleClick = (idProductClicked) => {
+    console.log("infoDelaCard", idProductClicked)
+    const productSelected = menu.find(({ id }) => id === idProductClicked)
+    console.log("productSelected", productSelected)
+    setProductSelected(productSelected)
   }
 
   // affichage
@@ -37,6 +38,7 @@ export default function Menu() {
           imageSource={imageSource ? imageSource : COMING_SOON}
           price={price}
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
         ></Card>
       })}
 

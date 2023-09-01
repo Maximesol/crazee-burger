@@ -6,14 +6,10 @@ import PrimaryButton from '../../../../reusable-ui/PrimaryButton';
 import ImagePreview from './ImagePreview';
 import SubmitMessage from './SubmitMessage';
 import { getinputTextsConfig } from './inputTexts.Config';
+import { EMPTY_PRODUCT } from '../../../../../enums/product';
 
 
-export const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: ""
-}
+
 
 export default function AddForm() {
     // state

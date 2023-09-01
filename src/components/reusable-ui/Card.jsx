@@ -10,7 +10,7 @@ import { TiDelete } from 'react-icons/ti'
 
 
 
-export default function Card({ imageSource, title, price, onDelete }) {
+export default function Card({ imageSource, title, price, onDelete, onClick }) {
   // state
   const { isAdmin } = useContext(AdminContext)
 
@@ -22,7 +22,7 @@ export default function Card({ imageSource, title, price, onDelete }) {
 
   // affichage
   return (
-    <CardStyled className={isAdmin ? 'isAdmin' : ''}>
+    <CardStyled className={isAdmin ? 'isAdmin' : ''} onClick={onClick}>
       {isAdmin && <button className='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>}

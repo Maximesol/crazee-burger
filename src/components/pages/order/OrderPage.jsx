@@ -5,7 +5,7 @@ import Main from "./Main/Main";
 import NavBar from "./NavBar/NavBar";
 import AdminContext from "../../../contexts/AdminContext";
 import { fakeMenu2 } from "../../../fakeData/fakeMenu"
-import { EMPTY_PRODUCT } from "./Main/Admin/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 
 export default function OrderPage() {
@@ -17,7 +17,7 @@ export default function OrderPage() {
     const [isOpen, setIsOpen] = useState(true)
     const [menu, setMenu] = useState(fakeMenu2)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
-
+    const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
 
 
@@ -61,7 +61,10 @@ export default function OrderPage() {
         handleDelete,
         resetMenu,
         newProduct,
-        setNewProduct
+        setNewProduct,
+        productSelected,
+        setProductSelected,
+
     }
 
     //comportement
