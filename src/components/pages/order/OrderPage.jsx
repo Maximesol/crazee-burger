@@ -24,7 +24,8 @@ export default function OrderPage() {
     const handleAdd = (newProduct) => {
         //1 copie du state
 
-        const menuCopy = [...menu]
+        //const menuCopy = [...menu] (manière moyenne)
+        const menuCopy = JSON.parse(JSON.stringify(menu)) //manière la plus sure de deep clone un objet
 
         //2 manipuler la copie du state
         const menuCopyUpdated = [newProduct, ...menuCopy]
@@ -32,6 +33,22 @@ export default function OrderPage() {
         // setteur
 
         setMenu(menuCopyUpdated)
+    }
+
+    const handleEdit = (productBeingEdited) => {
+
+        const menuCopy = JSON.parse(JSON.stringify(menu))
+
+        const menuCopyUpdated = menuCopy.map((product) => {
+            if (product.id === productBeingEdited.id) {
+                return productBeingEdited
+            } else {
+                return product
+            }
+        })
+
+        setMenu(menuCopyUpdated)
+        setProductSelected(productBeingEdited);
     }
 
     const handleDelete = (productToDelete) => {
@@ -64,6 +81,7 @@ export default function OrderPage() {
         setNewProduct,
         productSelected,
         setProductSelected,
+        handleEdit,
 
     }
 

@@ -13,13 +13,9 @@ export default function Menu() {
 
   const { menu, isAdmin, handleDelete, setProductSelected } = useContext(AdminContext)
 
-  //const [menu, setMenu] = useState(fakeMenu2)
-
   //comportement
   const handleClick = (idProductClicked) => {
-    console.log("infoDelaCard", idProductClicked)
     const productSelected = menu.find(({ id }) => id === idProductClicked)
-    console.log("productSelected", productSelected)
     setProductSelected(productSelected)
   }
 
