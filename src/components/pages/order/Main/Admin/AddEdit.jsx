@@ -5,11 +5,12 @@ import { getinputTextsConfig } from './inputTexts.Config.jsx';
 import ImagePreview from './ImagePreview';
 import { EMPTY_PRODUCT } from '../../../../../enums/product';
 import TextInput from '../../../../reusable-ui/TextInput';
+import HintMessage from './HintMessage.jsx';
 
 
 export default function AddEdit() {
 
-    const { productSelected, handleEdit } = useContext(AdminContext)
+    const { productSelected, handleEdit, isAdmin } = useContext(AdminContext)
     const [productBeinEdited, setProductBeinEdited] = useState(EMPTY_PRODUCT)
 
     const inputTexts = getinputTextsConfig(productSelected)
@@ -26,9 +27,17 @@ export default function AddEdit() {
         handleEdit(updatedProduct) // cette ligne update le menu
     }
 
+    console.log(isAdmin, productSelected)
+
+    if (isAdmin && !productSelected.title) {
+        return <HintMessage />
+    }
+
 
     return (
         <AddEditStyled>
+
+            {isAdmin && !productSelected.title && <HintMessage />}
 
             <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
 
@@ -51,11 +60,7 @@ export default function AddEdit() {
         </AddEditStyled>
     )
 }
-{/* <div className='hint-message-icon'>
-                <span className='hint-message'>Cliquer sur un produit du menu pour le modifier</span>
-                <HiCursorClick className='icon' />
-                {productSelected.title}
-            </div> */}
+
 const AddEditStyled = styled.form`
 
 display:grid;
@@ -67,6 +72,7 @@ height: 160px;
 grid-column-gap: 20px;
 grid-row-gap: 8px;
 padding-left: 70px;
+position: absolute;
 
 
 input{

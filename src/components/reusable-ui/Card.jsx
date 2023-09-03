@@ -18,7 +18,7 @@ export default function Card({ imageSource, title, price, onDelete, onClick }) {
 
   // affichage
   return (
-    <CardStyled className={isAdmin ? 'isAdmin' : ''} onClick={onClick}>
+    <CardStyled isAdmin={isAdmin} onClick={onClick}>
       {isAdmin && <button className='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>}
@@ -60,10 +60,12 @@ border-radius: ${theme.borderRadius.extraRound};
 position: relative;
 
 &:hover{
-  cursor: pointer;
-  width: 252px;
-  height: 346.5px;
-  box-shadow: 0px 8px 20px 8px rgba(255, 159, 27, 0.3); 
+  ${props => props.isAdmin && `
+    cursor: pointer;
+    width: 252px;
+    height: 346.5px;
+    box-shadow: 0px 8px 20px 8px rgba(255, 159, 27, 0.3);
+  `}
 }
 
 .delete-button{
