@@ -16,10 +16,6 @@ export default function Card({ imageSource, title, price, onDelete, onClick }) {
 
   // comportements
 
-
-
-
-
   // affichage
   return (
     <CardStyled className={isAdmin ? 'isAdmin' : ''} onClick={onClick}>
@@ -62,6 +58,13 @@ box-sizing: border-box;
 box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 border-radius: ${theme.borderRadius.extraRound};
 position: relative;
+
+&:hover{
+  cursor: pointer;
+  width: 252px;
+  height: 346.5px;
+  box-shadow: 0px 8px 20px 8px rgba(255, 159, 27, 0.3); 
+}
 
 .delete-button{
   border: 1px solid red;
