@@ -3,23 +3,21 @@ import styled from 'styled-components';
 import { formatPrice } from '../../utils/maths';
 import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
-import { useContext } from 'react';
-import AdminContext from '../../contexts/AdminContext';
 import { TiDelete } from 'react-icons/ti'
 
 
 
 
-export default function Card({ imageSource, title, price, onDelete, onClick }) {
+export default function Card({ imageSource, title, price, onDelete, onClick, isHoverable, hasDeleteButton }) {
   // state
-  const { isAdmin } = useContext(AdminContext)
+
 
   // comportements
 
   // affichage
   return (
-    <CardStyled isAdmin={isAdmin} onClick={onClick}>
-      {isAdmin && <button className='delete-button' onClick={onDelete}>
+    <CardStyled isHoverable={isHoverable} onClick={onClick}>
+      {hasDeleteButton && <button className='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>}
       <img src={imageSource} className="image" />
@@ -60,11 +58,12 @@ border-radius: ${theme.borderRadius.extraRound};
 position: relative;
 
 &:hover{
-  ${props => props.isAdmin && `
+  ${({ isHoverable }) => isHoverable && `
     cursor: pointer;
     width: 252px;
     height: 346.5px;
     box-shadow: 0px 8px 20px 8px rgba(255, 159, 27, 0.3);
+    transition: ease-out 0.4s;
   `}
 }
 

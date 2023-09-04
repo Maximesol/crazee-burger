@@ -35,6 +35,8 @@ export default function Menu() {
           price={price}
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
+          isHoverable={isAdmin}
+          hasDeleteButton={isAdmin}
         ></Card>
       })}
 
