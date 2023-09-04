@@ -15,8 +15,8 @@ export default function Menu() {
 
   //comportement
   const handleClick = (idProductClicked) => {
-    const productSelected = menu.find(({ id }) => id === idProductClicked)
-    setProductSelected(productSelected)
+    const productClickOn = menu.find(({ id }) => id === idProductClicked)
+    setProductSelected(productClickOn)
   }
 
   // affichage
