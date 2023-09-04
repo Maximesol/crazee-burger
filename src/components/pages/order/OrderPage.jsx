@@ -6,6 +6,8 @@ import NavBar from "./NavBar/NavBar";
 import AdminContext from "../../../contexts/AdminContext";
 import { fakeMenu2 } from "../../../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from "../../../utils/array";
+
 
 
 export default function OrderPage() {
@@ -25,7 +27,7 @@ export default function OrderPage() {
         //1 copie du state
 
         //const menuCopy = [...menu] (manière moyenne)
-        const menuCopy = JSON.parse(JSON.stringify(menu)) //manière la plus sure de deep clone un objet
+        const menuCopy = deepClone(menu) //manière la plus sure de deep clone un objet
 
         //2 manipuler la copie du state
         const menuCopyUpdated = [newProduct, ...menuCopy]
@@ -37,7 +39,7 @@ export default function OrderPage() {
 
     const handleEdit = (productBeingEdited) => {
 
-        const menuCopy = JSON.parse(JSON.stringify(menu))
+        const menuCopy = deepClone(menu)
 
         const menuCopyUpdated = menuCopy.map((product) => {
             if (product.id === productBeingEdited.id) {
