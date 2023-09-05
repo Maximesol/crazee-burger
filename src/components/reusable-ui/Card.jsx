@@ -4,11 +4,13 @@ import { formatPrice } from '../../utils/maths';
 import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
 import { TiDelete } from 'react-icons/ti'
+import { css } from 'styled-components';
 
 
 
 
-export default function Card({ imageSource, title, price, onDelete, onClick, isHoverable, hasDeleteButton }) {
+
+export default function Card({ imageSource, title, price, onDelete, onClick, isHoverable, hasDeleteButton, isSelected }) {
   // state
 
 
@@ -16,7 +18,12 @@ export default function Card({ imageSource, title, price, onDelete, onClick, isH
 
   // affichage
   return (
-    <CardStyled isHoverable={isHoverable} onClick={onClick}>
+    <CardStyled
+      isHoverable={isHoverable}
+      onClick={onClick}
+      isSelected={isSelected}
+
+    >
       {hasDeleteButton && <button className='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>}
@@ -161,6 +168,63 @@ position: relative;
   }
 
 
-    
-  
+  ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+
+ 
 `;
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+  .button-card {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease-out;
+    :hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+      transition: all 200ms ease-out;
+    }
+    :active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      z-index: 2;
+    }
+
+    &.with-focus {
+      border: 1px solid white;
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      :hover {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.white};
+      }
+      :active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
+  }
+
+  .icon {
+    color: ${theme.colors.white};
+
+    :active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .text-info {
+    .description {
+      .left-description {
+        color: ${theme.colors.white};
+      }
+    }
+  }
+`

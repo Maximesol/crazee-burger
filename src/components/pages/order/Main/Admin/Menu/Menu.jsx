@@ -11,12 +11,16 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete, setProductSelected } = useContext(AdminContext)
+  const { menu, isAdmin, handleDelete, setProductSelected, productSelected } = useContext(AdminContext)
 
   //comportement
   const handleClick = (idProductClicked) => {
     const productClickOn = menu.find(({ id }) => id === idProductClicked)
     setProductSelected(productClickOn)
+  }
+
+  const checkIfProductIsClicked = (idProductClicked, idProductSelected) => {
+    return idProductClicked === idProductSelected
   }
 
   // affichage
@@ -37,6 +41,7 @@ export default function Menu() {
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           hasDeleteButton={isAdmin}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
         ></Card>
       })}
 
