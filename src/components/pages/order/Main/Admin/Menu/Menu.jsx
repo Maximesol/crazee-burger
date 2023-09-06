@@ -11,11 +11,13 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete, setProductSelected, productSelected } = useContext(AdminContext)
+  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab } = useContext(AdminContext)
 
   //comportement
   const handleClick = (idProductClicked) => {
     if (!isAdmin) return
+    setIsOpen(true)
+    setCurrentTab("edit")
     const productClickOn = menu.find(({ id }) => id === idProductClicked)
     setProductSelected(productClickOn)
   }
