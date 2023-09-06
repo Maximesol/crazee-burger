@@ -38,7 +38,11 @@ export default function Card({ imageSource, title, price, onDelete, onClick, isH
           </div>
 
           <div className='right-descritption'>
-            <PrimaryButton label="Ajouter" className="button-card" />
+            <PrimaryButton
+
+              label="Ajouter"
+              className="button-card"
+              onClick={(event) => event.stopPropagation()} />
           </div>
         </div>
 
@@ -173,6 +177,7 @@ position: relative;
  
 `;
 const selectedStyle = css`
+
   background: ${theme.colors.primary};
   .button-card {
     color: ${theme.colors.primary};
@@ -212,7 +217,7 @@ const selectedStyle = css`
     }
   }
 
-  .icon {
+  .delete-button {
     color: ${theme.colors.white};
 
     :active {

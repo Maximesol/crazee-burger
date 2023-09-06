@@ -23,6 +23,11 @@ export default function Menu() {
     return idProductClicked === idProductSelected
   }
 
+  const handleCardDelete = (event, id) => {
+    event.stopPropagation(event)
+    handleDelete(id)
+  }
+
   // affichage
   if (menu.length === 0) {
     if (isAdmin) return <EmptyMenuAdmin />
@@ -37,7 +42,7 @@ export default function Menu() {
           title={title}
           imageSource={imageSource ? imageSource : COMING_SOON}
           price={price}
-          onDelete={() => handleDelete(id)}
+          onDelete={(event) => handleCardDelete(event, id)}
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           hasDeleteButton={isAdmin}
