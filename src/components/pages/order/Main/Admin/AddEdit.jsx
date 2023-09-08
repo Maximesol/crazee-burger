@@ -6,12 +6,14 @@ import ImagePreview from './ImagePreview';
 import { EMPTY_PRODUCT } from '../../../../../enums/product';
 import TextInput from '../../../../reusable-ui/TextInput';
 import HintMessage from './HintMessage.jsx';
+import { useRef } from 'react';
 
 
 export default function AddEdit() {
 
     const { productSelected, handleEdit, isAdmin } = useContext(AdminContext)
     const [productBeinEdited, setProductBeinEdited] = useState(EMPTY_PRODUCT)
+    const inputEditRef = useRef()
 
     const inputTexts = getinputTextsConfig(productSelected)
 

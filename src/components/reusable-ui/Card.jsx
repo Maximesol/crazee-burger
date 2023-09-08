@@ -19,9 +19,9 @@ export default function Card({ imageSource, title, price, onDelete, onClick, isH
   // affichage
   return (
     <CardStyled
-      isHoverable={isHoverable}
+      $isHoverable={isHoverable}
       onClick={onClick}
-      isSelected={isSelected}
+      $isSelected={isSelected}
 
     >
       {hasDeleteButton && <button className='delete-button' onClick={onDelete}>
