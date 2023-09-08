@@ -1,15 +1,11 @@
 import { styled, css } from "styled-components";
 import { theme } from "../../theme";
+import React from 'react'
 
 
 
 
-export default function TextInput({
-    value,
-    onChange,
-    Icon,
-    version = "normal",
-    ...extraProps }) {
+const TextInput = React.forwardRef(({ value, onChange, Icon, version = "normal", ...extraProps }, ref) => {
     return (
         <InputStyled
             version={version}>
@@ -19,13 +15,15 @@ export default function TextInput({
                 onChange={onChange}
                 version="normal"
                 {...extraProps}
+                ref={ref}
 
             >
 
             </input>
         </InputStyled>
     )
-}
+})
+export default TextInput
 
 const InputStyled = styled.div`
 

@@ -11,15 +11,17 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab } = useContext(AdminContext)
+  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef } = useContext(AdminContext)
 
   //comportement
-  const handleClick = (idProductClicked) => {
+  const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
-    setIsOpen(true)
-    setCurrentTab("edit")
+    await setIsOpen(true)
+    await setCurrentTab("edit")
     const productClickOn = menu.find(({ id }) => id === idProductClicked)
-    setProductSelected(productClickOn)
+    await setProductSelected(productClickOn)
+    titleEditRef.current.focus()
+
   }
 
   const checkIfProductIsClicked = (idProductClicked, idProductSelected) => {
@@ -29,6 +31,8 @@ export default function Menu() {
   const handleCardDelete = (event, id) => {
     event.stopPropagation(event)
     handleDelete(id)
+    titleEditRef.current.focus()
+
   }
 
   // affichage

@@ -6,14 +6,14 @@ import ImagePreview from './ImagePreview';
 import { EMPTY_PRODUCT } from '../../../../../enums/product';
 import TextInput from '../../../../reusable-ui/TextInput';
 import HintMessage from './HintMessage.jsx';
-import { useRef } from 'react';
+
 
 
 export default function AddEdit() {
 
-    const { productSelected, handleEdit, isAdmin } = useContext(AdminContext)
+    const { productSelected, handleEdit, isAdmin, titleEditRef } = useContext(AdminContext)
     const [productBeinEdited, setProductBeinEdited] = useState(EMPTY_PRODUCT)
-    const inputEditRef = useRef()
+
 
     const inputTexts = getinputTextsConfig(productSelected)
 
@@ -39,6 +39,7 @@ export default function AddEdit() {
     return (
         <AddEditStyled>
 
+
             {isAdmin && !productSelected.title && <HintMessage />}
 
             <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
@@ -52,6 +53,7 @@ export default function AddEdit() {
                             {...input}
                             onChange={handlechange}
                             version="minimalist"
+                            ref={input.name === "title" ? titleEditRef : null}
 
                         />
                     )
