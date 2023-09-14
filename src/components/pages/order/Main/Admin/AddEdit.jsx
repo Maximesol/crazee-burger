@@ -29,7 +29,7 @@ export default function AddEdit() {
         handleEdit(updatedProduct) // cette ligne update le menu
     }
 
-    console.log(isAdmin, productSelected)
+
 
     if (isAdmin && !productSelected.title) {
         return <HintMessage />

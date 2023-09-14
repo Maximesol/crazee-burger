@@ -19,9 +19,9 @@ export default function Card({ imageSource, title, price, onDelete, onClick, isH
   // affichage
   return (
     <CardStyled
-      $isHoverable={isHoverable}
+      isHoverable={isHoverable}
       onClick={onClick}
-      $isSelected={isSelected}
+      isSelected={isSelected}
 
     >
       {hasDeleteButton && <button className='delete-button' onClick={onDelete}>
@@ -53,7 +53,12 @@ export default function Card({ imageSource, title, price, onDelete, onClick, isH
 }
 
 
-const CardStyled = styled.div`
+// previous version :
+// const CardStyled = styled.div` : Génère l'erreur suivante: 
+// Warning: React does not recognize the `isHoverable` and 'isSelected'prop on a DOM element. 
+
+const CardStyled = styled(({ isHoverable, isSelected, ...rest }) => <div {...rest} />)`
+
 
 
  
