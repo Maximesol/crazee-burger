@@ -4,6 +4,7 @@ import AdminContext from '../../../../../../contexts/AdminContext';
 import Card from '../../../../../reusable-ui/Card';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
+import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 
 const COMING_SOON = "/public/images/coming-soon.png"
 
@@ -32,6 +33,7 @@ export default function Menu() {
     event.stopPropagation(event)
     handleDelete(id)
     titleEditRef.current.focus()
+    setProductSelected(EMPTY_PRODUCT)
 
   }
 
