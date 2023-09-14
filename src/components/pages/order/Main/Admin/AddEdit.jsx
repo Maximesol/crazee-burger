@@ -6,6 +6,7 @@ import ImagePreview from './ImagePreview';
 import { EMPTY_PRODUCT } from '../../../../../enums/product';
 import TextInput from '../../../../reusable-ui/TextInput';
 import HintMessage from './HintMessage.jsx';
+import AddEditInfoMessage from './AddEditInfoMessage.jsx';
 
 
 
@@ -61,8 +62,12 @@ export default function AddEdit() {
                     )
                 }))}
 
+                <AddEditInfoMessage />
+
 
             </div>
+
+
         </AddEditStyled>
     )
 }
