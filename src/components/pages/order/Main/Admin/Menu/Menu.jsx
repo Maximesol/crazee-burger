@@ -33,8 +33,7 @@ export default function Menu() {
     event.stopPropagation(event)
     handleDelete(id)
     titleEditRef.current.focus()
-    setProductSelected(EMPTY_PRODUCT)
-
+    id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
 
   // affichage

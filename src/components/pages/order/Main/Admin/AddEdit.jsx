@@ -15,6 +15,8 @@ export default function AddEdit() {
     const [productBeinEdited, setProductBeinEdited] = useState(EMPTY_PRODUCT)
 
 
+
+
     const inputTexts = getinputTextsConfig(productSelected)
 
     const handlechange = (event) => {
@@ -31,7 +33,7 @@ export default function AddEdit() {
 
 
 
-    if (isAdmin && !productSelected.title) {
+    if (isAdmin && !productSelected.id) {
         return <HintMessage />
     }
 
@@ -40,7 +42,7 @@ export default function AddEdit() {
         <AddEditStyled>
 
 
-            {isAdmin && !productSelected.title && <HintMessage />}
+            {isAdmin && !productSelected.id && <HintMessage />}
 
             <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
 
