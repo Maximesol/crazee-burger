@@ -6,7 +6,7 @@ import React from 'react'
 
 
 
-export default function Form({ onSubmit, onChange, product, children }) {
+const Form = React.forwardRef(({ onSubmit, onChange, product, children }, ref) => {
 
     // state
 
@@ -33,6 +33,7 @@ export default function Form({ onSubmit, onChange, product, children }) {
                             {...input}
                             onChange={onChange}
                             version="minimalist"
+                            ref={ref && input.name === 'title' ? ref : null}
                         />
                     )
                 }))}
@@ -43,7 +44,8 @@ export default function Form({ onSubmit, onChange, product, children }) {
 
         </FormStyled>
     )
-}
+})
+export default Form
 
 
 const FormStyled = styled.form`
@@ -57,6 +59,7 @@ height: 160px;
 grid-column-gap: 20px;
 grid-row-gap: 8px;
 padding-left: 70px;
+position: absolute;
 
 input{
     background: #F5F5F7;
