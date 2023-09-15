@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import NavBar from "./NavBar/NavBar";
 import AdminContext from "../../../contexts/AdminContext";
 import { fakeMenu2 } from "../../../fakeData/fakeMenu"
-import { EMPTY_PRODUCT } from "./Main/Admin/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepClone } from "../../../utils/array";
+
 
 
 export default function OrderPage() {
@@ -17,6 +19,8 @@ export default function OrderPage() {
     const [isOpen, setIsOpen] = useState(true)
     const [menu, setMenu] = useState(fakeMenu2)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+    const titleEditRef = useRef()
 
 
 
@@ -24,7 +28,8 @@ export default function OrderPage() {
     const handleAdd = (newProduct) => {
         //1 copie du state
 
-        const menuCopy = [...menu]
+        //const menuCopy = [...menu] (manière moyenne)
+        const menuCopy = deepClone(menu) //manière la plus sure de deep clone un objet
 
         //2 manipuler la copie du state
         const menuCopyUpdated = [newProduct, ...menuCopy]
@@ -32,6 +37,22 @@ export default function OrderPage() {
         // setteur
 
         setMenu(menuCopyUpdated)
+    }
+
+    const handleEdit = (productBeingEdited) => {
+
+        const menuCopy = deepClone(menu)
+
+        const menuCopyUpdated = menuCopy.map((product) => {
+            if (product.id === productBeingEdited.id) {
+                return productBeingEdited
+            } else {
+                return product
+            }
+        })
+
+        setMenu(menuCopyUpdated)
+        setProductSelected(productBeingEdited);
     }
 
     const handleDelete = (productToDelete) => {
@@ -61,7 +82,12 @@ export default function OrderPage() {
         handleDelete,
         resetMenu,
         newProduct,
-        setNewProduct
+        setNewProduct,
+        productSelected,
+        setProductSelected,
+        handleEdit,
+        titleEditRef,
+
     }
 
     //comportement

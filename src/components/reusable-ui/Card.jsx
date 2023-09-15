@@ -3,27 +3,28 @@ import styled from 'styled-components';
 import { formatPrice } from '../../utils/maths';
 import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
-import { useContext } from 'react';
-import AdminContext from '../../contexts/AdminContext';
 import { TiDelete } from 'react-icons/ti'
+import { css } from 'styled-components';
 
 
 
 
-export default function Card({ imageSource, title, price, onDelete }) {
+
+export default function Card({ imageSource, title, price, onDelete, onClick, isHoverable, hasDeleteButton, isSelected }) {
   // state
-  const { isAdmin } = useContext(AdminContext)
+
 
   // comportements
 
-
-
-
-
   // affichage
   return (
-    <CardStyled className={isAdmin ? 'isAdmin' : ''}>
-      {isAdmin && <button className='delete-button' onClick={onDelete}>
+    <CardStyled
+      isHoverable={isHoverable}
+      onClick={onClick}
+      isSelected={isSelected}
+
+    >
+      {hasDeleteButton && <button className='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>}
       <img src={imageSource} className="image" />
@@ -37,7 +38,11 @@ export default function Card({ imageSource, title, price, onDelete }) {
           </div>
 
           <div className='right-descritption'>
-            <PrimaryButton label="Ajouter" className="button-card" />
+            <PrimaryButton
+
+              label="Ajouter"
+              className="button-card"
+              onClick={(event) => event.stopPropagation()} />
           </div>
         </div>
 
@@ -48,7 +53,12 @@ export default function Card({ imageSource, title, price, onDelete }) {
 }
 
 
-const CardStyled = styled.div`
+// previous version :
+// const CardStyled = styled.div` : Génère l'erreur suivante: 
+// Warning: React does not recognize the `isHoverable` and 'isSelected'prop on a DOM element. 
+
+const CardStyled = styled(({ isHoverable, isSelected, ...rest }) => <div {...rest} />)`
+
 
 
  
@@ -62,6 +72,16 @@ box-sizing: border-box;
 box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
 border-radius: ${theme.borderRadius.extraRound};
 position: relative;
+
+&:hover{
+  ${({ isHoverable }) => isHoverable && `
+    cursor: pointer;
+    width: 252px;
+    height: 346.5px;
+    box-shadow: 0px 8px 20px 8px rgba(255, 159, 27, 0.3);
+    transition: ease-out 0.4s;
+  `}
+}
 
 .delete-button{
   border: 1px solid red;
@@ -157,6 +177,64 @@ position: relative;
   }
 
 
-    
-  
+  ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+
+ 
 `;
+const selectedStyle = css`
+
+  background: ${theme.colors.primary};
+  .button-card {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease-out;
+    :hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+      transition: all 200ms ease-out;
+    }
+    :active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
+
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      z-index: 2;
+    }
+
+    &.with-focus {
+      border: 1px solid white;
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      :hover {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.white};
+      }
+      :active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
+  }
+
+  .delete-button {
+    color: ${theme.colors.white};
+
+    :active {
+      color: ${theme.colors.white};
+    }
+  }
+
+  .text-info {
+    .description {
+      .left-description {
+        color: ${theme.colors.white};
+      }
+    }
+  }
+`

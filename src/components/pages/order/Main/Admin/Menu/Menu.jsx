@@ -4,6 +4,7 @@ import AdminContext from '../../../../../../contexts/AdminContext';
 import Card from '../../../../../reusable-ui/Card';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
+import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 
 const COMING_SOON = "/public/images/coming-soon.png"
 
@@ -11,15 +12,28 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete } = useContext(AdminContext)
-
-  //const [menu, setMenu] = useState(fakeMenu2)
+  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef } = useContext(AdminContext)
 
   //comportement
+  const handleClick = async (idProductClicked) => {
+    if (!isAdmin) return
+    await setIsOpen(true)
+    await setCurrentTab("edit")
+    const productClickOn = menu.find(({ id }) => id === idProductClicked)
+    await setProductSelected(productClickOn)
+    titleEditRef.current.focus()
 
+  }
 
-  {
+  const checkIfProductIsClicked = (idProductClicked, idProductSelected) => {
+    return idProductClicked === idProductSelected
+  }
 
+  const handleCardDelete = (event, id) => {
+    event.stopPropagation(event)
+    handleDelete(id)
+    titleEditRef.current.focus()
+    id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
 
   // affichage
@@ -36,7 +50,11 @@ export default function Menu() {
           title={title}
           imageSource={imageSource ? imageSource : COMING_SOON}
           price={price}
-          onDelete={() => handleDelete(id)}
+          onDelete={(event) => handleCardDelete(event, id)}
+          onClick={() => handleClick(id)}
+          isHoverable={isAdmin}
+          hasDeleteButton={isAdmin}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
         ></Card>
       })}
 
