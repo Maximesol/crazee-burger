@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
-import AdminContext from '../../../../../contexts/AdminContext';
-import { EMPTY_PRODUCT } from '../../../../../enums/product';
+import AdminContext from '../../../../../../contexts/AdminContext';
+import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import Form from './Form'
 import SubmitButton from './SubmitButton';
 import './AddForm.css';

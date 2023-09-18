@@ -13,14 +13,13 @@ export default function Basket() {
             </div>
             <div className='main'>Main</div>
 
-            <div className='footer'>Footer</div>
+            <div className='footer'>Codé avec ❤️ et React.JS</div>
 
         </BasketStyled>
     )
 }
 
 const BasketStyled = styled.div`
-background: pink;
 width: 350px;
 display: grid;
 grid-template-rows: 50px 1fr 50px;
@@ -47,12 +46,22 @@ grid-template-rows: 50px 1fr 50px;
     
 }
 .main{
-    background: blue;
-    flex: 1;
+flex: 1;
+background: #F5F5F7;
+box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.20) inset;
 }
 .footer{
-    background: green;
-    heigth: 70px;
+display: flex;
+align-items: center;
+justify-content: center;
+heigth: 70px;
+background: #292729;
+color: #FFF;
+font-family: Amatic SC;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
   

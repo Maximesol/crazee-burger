@@ -1,5 +1,5 @@
 import React from 'react'
-import PrimaryButton from '../../../../reusable-ui/PrimaryButton'
+import PrimaryButton from '../../../../../reusable-ui/PrimaryButton'
 import SubmitMessage from './SubmitMessage';
 
 export default function SubmitButton({ productAdded }) {

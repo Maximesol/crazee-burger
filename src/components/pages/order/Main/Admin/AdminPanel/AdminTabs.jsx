@@ -1,10 +1,9 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import { FiChevronDown, FiChevronUp } from "react-icons/fi"
-import Tab from '../../../../reusable-ui/Tab';
-import AdminContext from "../../../../../contexts/AdminContext.jsx"
-import { getTabsConfig } from './getTabsConfig';
-
+import Tab from '../../../../../reusable-ui/Tab';
+import AdminContext from "../../../../../../contexts/AdminContext.jsx"
+import { getTabsConfig } from "./getTabsConfig.jsx"
 export default function AdminTabs() {
   //state
 
