@@ -4,6 +4,7 @@ import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import Form from './Form'
 import SubmitButton from './SubmitButton';
 import './AddForm.css';
+import { useSuccessMessage } from '../../../../../../hooks/useSuccesMessage';
 
 
 
@@ -12,7 +13,7 @@ export default function AddForm() {
     // state
     const { handleAdd } = useContext(AdminContext)
     const { newProduct, setNewProduct } = useContext(AdminContext)
-    const [productAdded, setProductAdded] = useState(false)
+    const { productAdded, handleSuccessMessage } = useSuccessMessage()
 
     // comportements 
 
@@ -24,10 +25,7 @@ export default function AddForm() {
         }
         handleAdd(newProductToAdd)
         setNewProduct(EMPTY_PRODUCT)
-        setProductAdded(true)
-        setTimeout(() => {
-            setProductAdded(false)
-        }, 2000)
+        handleSuccessMessage()
     }
 
     const handleChange = (event) => {
