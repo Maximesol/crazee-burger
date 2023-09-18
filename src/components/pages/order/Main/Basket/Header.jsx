@@ -1,12 +1,12 @@
 import React from 'react'
 import { styled } from 'styled-components';
 
-export default function Header({ children }) {
+export default function Header({ amountToPay }) {
     return (
         <HeaderStyled >
             <div className='header-text'>
                 <span>TOTAL</span>
-                <span>{children}</span>
+                <span>{amountToPay}</span>
 
             </div>
         </HeaderStyled>
