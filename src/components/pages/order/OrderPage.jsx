@@ -4,9 +4,8 @@ import { theme } from "../../../theme";
 import Main from "./Main/Main";
 import NavBar from "./NavBar/NavBar";
 import AdminContext from "../../../contexts/AdminContext";
-import { fakeMenu2 } from "../../../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product";
-import { deepClone } from "../../../utils/array";
+import { useMenu } from '../../../hooks/useMenu';
 
 
 
@@ -17,57 +16,15 @@ export default function OrderPage() {
     const [isAdmin, setIsAdmin] = useState(false)
     const [currentTab, setCurrentTab] = useState("add")
     const [isOpen, setIsOpen] = useState(true)
-    const [menu, setMenu] = useState(fakeMenu2)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
+    const { menu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
 
 
 
 
-    const handleAdd = (newProduct) => {
-        //1 copie du state
 
-        //const menuCopy = [...menu] (manière moyenne)
-        const menuCopy = deepClone(menu) //manière la plus sure de deep clone un objet
-
-        //2 manipuler la copie du state
-        const menuCopyUpdated = [newProduct, ...menuCopy]
-
-        // setteur
-
-        setMenu(menuCopyUpdated)
-    }
-
-    const handleEdit = (productBeingEdited) => {
-
-        const menuCopy = deepClone(menu)
-
-        const menuCopyUpdated = menuCopy.map((product) => {
-            if (product.id === productBeingEdited.id) {
-                return productBeingEdited
-            } else {
-                return product
-            }
-        })
-
-        setMenu(menuCopyUpdated)
-        setProductSelected(productBeingEdited);
-    }
-
-    const handleDelete = (productToDelete) => {
-
-        const menuCopy = [...menu]
-
-        const menuCopyUpdated = menuCopy.filter(product => product.id !== productToDelete)
-
-        setMenu(menuCopyUpdated)
-
-    }
-
-    const resetMenu = () => {
-        setMenu(fakeMenu2)
-    }
 
 
     const adminContextValue = {
