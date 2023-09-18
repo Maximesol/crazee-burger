@@ -4,6 +4,7 @@ import AdminContext from '../../../../contexts/AdminContext';
 import { theme } from '../../../../theme';
 import Admin from './Admin/Admin';
 import Menu from './Admin/Menu/Menu';
+import Basket from './Basket';
 
 
 export default function Main() {
@@ -17,7 +18,7 @@ export default function Main() {
     //affichage
     return (
         <MainStyled>
-            {/* <div className='basket'>BASKET</div> */}
+            <Basket />
             <div className='menu-add-admin'>
                 <Menu />
                 {isAdmin && <Admin />}
@@ -33,11 +34,8 @@ const MainStyled = styled.div`
     border-radius: 0px 0px 15px 15px;
     overflow-y: scroll;
     display: grid;
-    ${'' /* grid-template-columns: 1fr; */}
-    grid-template-columns: 1fr; 
-     ${'' /* .basket{
-        background: pink;
-    } */}
+    grid-template-columns: 25% 75%;
+     
 
     
     .menu-add-admin{
