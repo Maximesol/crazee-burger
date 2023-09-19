@@ -19,9 +19,9 @@ Crazee Burger est un site e-commerce pour un restaurant de burgers. Les utilisat
 Ce guide suppose que vous avez déjà installé Node.js et npm.
 
 ### 1. Clonez ce répertoire
-\`\`\`sh
+
 git clone https://github.com/votre_nom_utilisateur/crazee-burger.git
-\`\`\`
+
 
 ### 2. Installez les dépendances
 
