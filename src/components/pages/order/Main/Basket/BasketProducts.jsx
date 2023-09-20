@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
 
+const COMING_SOON = "/public/images/coming-soon.png"
+
+
 export default function BasketProducts({ basket }) {
     return (
         <BasketProductsStyled>
             {basket.map((product) => (
                 <div className='basket-card'>
-                    <BasketCard {...product} />
+                    <BasketCard {...product} imageSource={product.imageSource ? product.imageSource : COMING_SOON} />
                 </div>
             ))}
         </BasketProductsStyled>
