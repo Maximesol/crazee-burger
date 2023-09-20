@@ -9,8 +9,10 @@ export default function BasketProducts({ basket }) {
     return (
         <BasketProductsStyled>
             {basket.map((product) => (
-                <div className='basket-card'>
-                    <BasketCard {...product} imageSource={product.imageSource ? product.imageSource : COMING_SOON} />
+                <div className='basket-card' key={product.id}>
+                    <BasketCard
+                        {...product}
+                        imageSource={product.imageSource ? product.imageSource : COMING_SOON} />
                 </div>
             ))}
         </BasketProductsStyled>

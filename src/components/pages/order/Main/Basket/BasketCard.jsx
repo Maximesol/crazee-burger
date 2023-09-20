@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { MdDeleteForever } from "react-icons/md";
-import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
 
-export default function BasketCard({ title, price, quantity, imageSource, onDelete }) {
+export default function BasketCard({ title, price, quantity, imageSource }) {
+    // state
     return (
         <BasketCardStyled>
             {/* <div className="delete-button" onClick={onDelete}>

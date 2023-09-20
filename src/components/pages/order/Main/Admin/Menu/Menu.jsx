@@ -1,19 +1,17 @@
 import { useContext } from 'react'
 import styled from 'styled-components';
-import AdminContext from '../../../../../../contexts/AdminContext';
 import Card from '../../../../../reusable-ui/Card';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
-
+import AdminContext from '../../../../../../contexts/AdminContext';
 const COMING_SOON = "/public/images/coming-soon.png"
 
 
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef } = useContext(AdminContext)
-
+  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef, basket, setBasket } = useContext(AdminContext)
   //comportement
   const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
@@ -36,6 +34,32 @@ export default function Menu() {
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
 
+  const handleAddToBasket = (idProductToAdd) => {
+    const productToAdd = menu.find(({ id }) => id === idProductToAdd);
+    const existingProductIndex = basket.findIndex(({ id }) => id === idProductToAdd);
+
+    let newBasket;
+
+    if (existingProductIndex !== -1) {
+      newBasket = [...basket];
+      newBasket[existingProductIndex].quantity += 1;
+      const [updatedProduct] = newBasket.splice(existingProductIndex, 1);
+      newBasket = [updatedProduct, ...newBasket];
+    } else {
+      newBasket = [{ ...productToAdd, quantity: 1 }, ...basket];
+    }
+
+    setBasket(newBasket);
+  };
+
+
+
+
+
+
+
+
+
   // affichage
   if (menu.length === 0) {
     if (isAdmin) return <EmptyMenuAdmin />
@@ -54,6 +78,7 @@ export default function Menu() {
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           hasDeleteButton={isAdmin}
+          onAddToBasket={() => handleAddToBasket(id)}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
         ></Card>
       })}

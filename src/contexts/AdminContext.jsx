@@ -8,6 +8,7 @@ export default createContext({
     isOpen: false,
     setIsOpen: () => { },
     menu: [],
+    setMenu: () => { },
     handleAdd: () => { },
     handleDelete: () => { },
     resetMenu: () => { },
@@ -18,5 +19,8 @@ export default createContext({
     handleEdit: () => { },
     titleEditRef: {},
     basket: [],
+    setBasket: () => { },
+    handleAddToBasket: () => { },
+
 
 })
