@@ -1,8 +1,7 @@
 import { useContext, useState } from 'react';
-import AdminContext from "../../../../../contexts/AdminContext.jsx"
+import AdminContext from "../../../../../../contexts/AdminContext.jsx"
 import { getinputTextsConfig } from './inputTexts.Config.jsx';
-import ImagePreview from './ImagePreview';
-import { EMPTY_PRODUCT } from '../../../../../enums/product';
+import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import HintMessage from './HintMessage.jsx';
 import AddEditInfoMessage from './AddEditInfoMessage.jsx';
 import Form from './Form.jsx';

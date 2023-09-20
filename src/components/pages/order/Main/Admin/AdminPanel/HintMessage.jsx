@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import { HiCursorClick } from 'react-icons/hi'
 import { useContext } from "react";
-import AdminContext from "../../../../../contexts/AdminContext";
+import AdminContext from "../../../../../../contexts/AdminContext";
 
 
 styled

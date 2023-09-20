@@ -1,26 +1,26 @@
 import { useContext } from 'react'
 import { styled } from 'styled-components'
-import AdminContext from '../../../../../contexts/AdminContext'
-import { theme } from '../../../../../theme'
+import AdminContext from '../../../../../../contexts/AdminContext'
+import { theme } from '../../../../../../theme'
 
 
 export default function ImagePreview({ imageSource, title }) {
 
-    //state
+  //state
 
-    //comportement
+  //comportement
 
-    //affichage
-    return (
-        <ImagePreviewStyled >
-            {imageSource ? (
-                <img src={imageSource} alt={title} />
-            ) : (
-                <div className="empty-image">Aucune Image</div>
-            )}
+  //affichage
+  return (
+    <ImagePreviewStyled >
+      {imageSource ? (
+        <img src={imageSource} alt={title} />
+      ) : (
+        <div className="empty-image">Aucune Image</div>
+      )}
 
-        </ImagePreviewStyled>
-    )
+    </ImagePreviewStyled>
+  )
 }
 
 const ImagePreviewStyled = styled.div`
