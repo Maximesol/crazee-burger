@@ -3,13 +3,23 @@ import styled from 'styled-components';
 import Footer from './Footer';
 import Header from './Header';
 import { formatPrice } from '../../../../../utils/maths';
-import BasketBody from './Body';
+import EmptyBasketBody from './EmptyBasketBody';
+import { useContext } from 'react';
+import AdminContext from '../../../../../contexts/AdminContext';
+import BasketProducts from './BasketProducts';
 
 export default function Basket() {
+
+    // state
+    const { basket } = useContext(AdminContext)
+
+    //comportement
+
+    //affichage
     return (
         <BasketStyled>
             <Header amountToPay={formatPrice(10)} />
-            <BasketBody />
+            {basket.length === 0 ? <EmptyBasketBody /> : <BasketProducts />}
 
             <Footer />
 
