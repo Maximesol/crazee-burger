@@ -6,13 +6,11 @@ import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import AdminContext from '../../../../../../contexts/AdminContext';
 const COMING_SOON = "/public/images/coming-soon.png"
-import { deepClone } from '../../../../../../utils/array';
-
 
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef, basket, setBasket } = useContext(AdminContext)
+  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef, basket, handleAddToBasket } = useContext(AdminContext)
   //comportement
   const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
@@ -35,23 +33,11 @@ export default function Menu() {
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
 
-  const handleAddToBasket = (idProductToAdd, event) => {
+  const handleAddToButton = (idProductToAdd, event) => {
     event.stopPropagation()
     const productToAdd = menu.find(({ id }) => id === idProductToAdd);
-    const existingProductIndex = basket.findIndex(({ id }) => id === idProductToAdd);
+    handleAddToBasket(productToAdd)
 
-    let newBasket;
-
-    if (existingProductIndex !== -1) {
-      newBasket = deepClone(basket);
-      newBasket[existingProductIndex].quantity += 1;
-      const [updatedProduct] = newBasket.splice(existingProductIndex, 1);
-      newBasket = [updatedProduct, ...newBasket];
-    } else {
-      newBasket = [{ ...productToAdd, quantity: 1 }, ...basket];
-    }
-
-    setBasket(newBasket);
   }
 
 
@@ -80,7 +66,7 @@ export default function Menu() {
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           hasDeleteButton={isAdmin}
-          onAddToBasket={(event) => handleAddToBasket(id, event)}
+          onAddToBasket={(event) => handleAddToButton(id, event)}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
         ></Card>
       })}

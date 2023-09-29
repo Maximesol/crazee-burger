@@ -6,6 +6,7 @@ import NavBar from "./NavBar/NavBar";
 import AdminContext from "../../../contexts/AdminContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from '../../../hooks/useMenu';
+import { useBasket } from '../../../hooks/useBasket';
 
 
 export default function OrderPage() {
@@ -19,7 +20,8 @@ export default function OrderPage() {
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const { menu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
-    const [basket, setBasket] = useState([])
+    const { basket, handleAddToBasket } = useBasket()
+
 
 
 
@@ -45,7 +47,7 @@ export default function OrderPage() {
         handleEdit,
         titleEditRef,
         basket,
-        setBasket,
+        handleAddToBasket
 
     }
 
