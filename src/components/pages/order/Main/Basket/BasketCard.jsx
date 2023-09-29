@@ -3,26 +3,26 @@ import styled from "styled-components";
 import { formatPrice } from "../../../../../utils/maths";
 
 export default function BasketCard({ title, price, quantity, imageSource }) {
-    // state
-    return (
-        <BasketCardStyled>
-            {/* <div className="delete-button" onClick={onDelete}>
+  // state
+  return (
+    <BasketCardStyled>
+      {/* <div className="delete-button" onClick={onDelete}>
                 <MdDeleteForever className="icon" />
             </div> */}
-            <div className="image">
-                <img src={imageSource} alt={title} />
-            </div>
-            <div className="text-info">
-                <div className="left-info">
-                    <span className="title">{title}</span>
-                    <span className="price">{formatPrice(price)}</span>
-                </div>
-                <div className="quantity">
-                    <span>x {quantity}</span>
-                </div>
-            </div>
-        </BasketCardStyled>
-    );
+      <div className="image">
+        <img src={imageSource} alt={title} />
+      </div>
+      <div className="text-info">
+        <div className="left-info">
+          <span className="title">{title}</span>
+          <span className="price">{formatPrice(price)}</span>
+        </div>
+        <div className="quantity">
+          <span>x {quantity}</span>
+        </div>
+      </div>
+    </BasketCardStyled>
+  );
 }
 
 const BasketCardStyled = styled.div`
@@ -69,7 +69,7 @@ display: flex;
 
       .title {
         flex-shrink: 1;
-        width: 135px;  /* Ajustez cette valeur */
+        width: 135px;  
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -80,7 +80,7 @@ font-family: Amatic SC;
 font-size: 24px;
 font-style: normal;
 font-weight: 700;
-line-height: 32px; /* 133.333% */
+line-height: 32px;
 
         
       }

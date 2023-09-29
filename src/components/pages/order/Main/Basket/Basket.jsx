@@ -14,12 +14,19 @@ export default function Basket() {
     // state
     const { basket, isAdmin } = useContext(AdminContext)
 
+
     //comportement
+
+    const totalToPay = basket.reduce((total, basketProduct) => {
+
+        return total + (basketProduct.price * basketProduct.quantity)
+
+    }, 0)
 
     //affichage
     return (
         <BasketStyled>
-            <Header amountToPay={formatPrice(10)} />
+            <Header amountToPay={formatPrice(totalToPay)} />
             {basket.length === 0 ? <EmptyBasketBody /> : <BasketProducts basket={basket} />}
 
             <Footer />

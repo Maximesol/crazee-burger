@@ -1,11 +1,11 @@
-import React from 'react'
 import { useState } from 'react'
 import { deepClone } from '../utils/array'
+import { fakeBasket } from '../fakeData/fakeBasket'
 
 export const useBasket = () => {
 
     //state 
-    const [basket, setBasket] = useState([])
+    const [basket, setBasket] = useState(fakeBasket.EMPTY)
 
     //comportement
 
@@ -15,12 +15,15 @@ export const useBasket = () => {
 
         let newBasket;
 
+        // If product already exists in basket, update quantity
         if (existingProductIndex !== -1) {
             newBasket = deepClone(basket);
             newBasket[existingProductIndex].quantity += 1;
             const [updatedProduct] = newBasket.splice(existingProductIndex, 1);
             newBasket = [updatedProduct, ...newBasket];
-        } else {
+        }
+        // Else add product to basket
+        else {
             newBasket = [{ ...productToAdd, quantity: 1 }, ...basket];
         }
 
