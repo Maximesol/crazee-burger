@@ -42,10 +42,7 @@ export default function Card({ imageSource, title, price, onDelete, onClick, isH
 
               label="Ajouter"
               className="button-card"
-              onClick={(event) => {
-                event.stopPropagation()
-                onAddToBasket()
-              }} />
+              onClick={(event) => onAddToBasket(event)} />
           </div>
         </div>
 

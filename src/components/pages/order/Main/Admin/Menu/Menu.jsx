@@ -6,6 +6,7 @@ import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import AdminContext from '../../../../../../contexts/AdminContext';
 const COMING_SOON = "/public/images/coming-soon.png"
+import { deepClone } from '../../../../../../utils/array';
 
 
 export default function Menu() {
@@ -34,14 +35,15 @@ export default function Menu() {
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
 
-  const handleAddToBasket = (idProductToAdd) => {
+  const handleAddToBasket = (idProductToAdd, event) => {
+    event.stopPropagation()
     const productToAdd = menu.find(({ id }) => id === idProductToAdd);
     const existingProductIndex = basket.findIndex(({ id }) => id === idProductToAdd);
 
     let newBasket;
 
     if (existingProductIndex !== -1) {
-      newBasket = [...basket];
+      newBasket = deepClone(basket);
       newBasket[existingProductIndex].quantity += 1;
       const [updatedProduct] = newBasket.splice(existingProductIndex, 1);
       newBasket = [updatedProduct, ...newBasket];
@@ -50,7 +52,7 @@ export default function Menu() {
     }
 
     setBasket(newBasket);
-  };
+  }
 
 
 
@@ -78,7 +80,7 @@ export default function Menu() {
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           hasDeleteButton={isAdmin}
-          onAddToBasket={() => handleAddToBasket(id)}
+          onAddToBasket={(event) => handleAddToBasket(id, event)}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
         ></Card>
       })}
