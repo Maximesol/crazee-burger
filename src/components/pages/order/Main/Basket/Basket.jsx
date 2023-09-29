@@ -12,12 +12,13 @@ import { theme } from '../../../../../theme';
 export default function Basket() {
 
     // state
-    const { basket, isAdmin } = useContext(AdminContext)
+    const { basket, isAdmin, handleDeleteBasketProduct } = useContext(AdminContext)
 
 
     //comportement
 
     const totalToPay = basket.reduce((total, basketProduct) => {
+        if (isNaN(basketProduct.price)) return total
 
         return total + (basketProduct.price * basketProduct.quantity)
 
@@ -27,7 +28,10 @@ export default function Basket() {
     return (
         <BasketStyled>
             <Header amountToPay={formatPrice(totalToPay)} />
-            {basket.length === 0 ? <EmptyBasketBody /> : <BasketProducts basket={basket} />}
+            {basket.length === 0 ? <EmptyBasketBody /> : <BasketProducts
+                basket={basket}
+                isAdmin={isAdmin}
+                handleDeleteBasketProduct={handleDeleteBasketProduct} />}
 
             <Footer />
 
@@ -43,5 +47,14 @@ const BasketStyled = styled.div`
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   height: 85vh;
 
-  
+  .head {
+    position: sticky;
+    top: 0;
+  }
+
+  .footer {
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    position: sticky;
+    bottom: 0;
+  }
 `
