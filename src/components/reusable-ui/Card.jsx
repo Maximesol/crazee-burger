@@ -10,7 +10,7 @@ import { css } from 'styled-components';
 
 
 
-export default function Card({ imageSource, title, price, onDelete, onClick, isHoverable, hasDeleteButton, isSelected }) {
+export default function Card({ imageSource, title, price, onDelete, onClick, isHoverable, hasDeleteButton, isSelected, onAddToBasket }) {
   // state
 
 
@@ -42,7 +42,7 @@ export default function Card({ imageSource, title, price, onDelete, onClick, isH
 
               label="Ajouter"
               className="button-card"
-              onClick={(event) => event.stopPropagation()} />
+              onClick={(event) => onAddToBasket(event)} />
           </div>
         </div>
 

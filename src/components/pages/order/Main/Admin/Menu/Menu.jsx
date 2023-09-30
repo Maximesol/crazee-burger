@@ -1,19 +1,27 @@
 import { useContext } from 'react'
 import styled from 'styled-components';
-import AdminContext from '../../../../../../contexts/AdminContext';
 import Card from '../../../../../reusable-ui/Card';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
-
+import AdminContext from '../../../../../../contexts/AdminContext';
 const COMING_SOON = "/public/images/coming-soon.png"
-
 
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef } = useContext(AdminContext)
-
+  const {
+    menu,
+    isAdmin,
+    handleDelete,
+    setProductSelected,
+    productSelected,
+    setIsOpen,
+    setCurrentTab,
+    titleEditRef,
+    basket,
+    handleAddToBasket,
+    handleDeleteBasketProduct } = useContext(AdminContext)
   //comportement
   const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
@@ -32,9 +40,25 @@ export default function Menu() {
   const handleCardDelete = (event, id) => {
     event.stopPropagation(event)
     handleDelete(id)
+    handleDeleteBasketProduct(id)
     titleEditRef.current.focus()
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
+
+  const handleAddToButton = (idProductToAdd, event) => {
+    event.stopPropagation()
+    const productToAdd = menu.find(({ id }) => id === idProductToAdd);
+    handleAddToBasket(productToAdd)
+
+  }
+
+
+
+
+
+
+
+
 
   // affichage
   if (menu.length === 0) {
@@ -54,6 +78,7 @@ export default function Menu() {
           onClick={() => handleClick(id)}
           isHoverable={isAdmin}
           hasDeleteButton={isAdmin}
+          onAddToBasket={(event) => handleAddToButton(id, event)}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
         ></Card>
       })}

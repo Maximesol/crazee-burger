@@ -52,6 +52,8 @@ export const useMenu = (setProductSelected) => {
         setMenu(fakeMenu2)
     }
 
+
+
     return { menu, resetMenu, handleDelete, handleEdit, handleAdd }
 
 }

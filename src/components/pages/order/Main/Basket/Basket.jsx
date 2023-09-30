@@ -3,13 +3,35 @@ import styled from 'styled-components';
 import Footer from './Footer';
 import Header from './Header';
 import { formatPrice } from '../../../../../utils/maths';
-import BasketBody from './Body';
+import EmptyBasketBody from './EmptyBasketBody';
+import { useContext } from 'react';
+import AdminContext from '../../../../../contexts/AdminContext';
+import BasketProducts from './BasketProducts';
+import { theme } from '../../../../../theme';
 
 export default function Basket() {
+
+    // state
+    const { basket, isAdmin, handleDeleteBasketProduct } = useContext(AdminContext)
+
+
+    //comportement
+
+    const totalToPay = basket.reduce((total, basketProduct) => {
+        if (isNaN(basketProduct.price)) return total
+
+        return total + (basketProduct.price * basketProduct.quantity)
+
+    }, 0)
+
+    //affichage
     return (
         <BasketStyled>
-            <Header amountToPay={formatPrice(10)} />
-            <BasketBody />
+            <Header amountToPay={formatPrice(totalToPay)} />
+            {basket.length === 0 ? <EmptyBasketBody /> : <BasketProducts
+                basket={basket}
+                isAdmin={isAdmin}
+                handleDeleteBasketProduct={handleDeleteBasketProduct} />}
 
             <Footer />
 
@@ -18,13 +40,21 @@ export default function Basket() {
 }
 
 const BasketStyled = styled.div`
-width: 350px;
-display: grid;
-grid-template-rows: 50px 1fr 50px;
+  background: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.basket};
+  display: flex;
+  flex-direction: column;
+  border-bottom-left-radius: ${theme.borderRadius.extraRound};
+  height: 85vh;
 
+  .head {
+    position: sticky;
+    top: 0;
+  }
 
-
-
-
-  
-`;
+  .footer {
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
+    position: sticky;
+    bottom: 0;
+  }
+`
