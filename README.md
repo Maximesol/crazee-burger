@@ -6,6 +6,8 @@
 ## Description du Projet
 Crazee Burger est un site e-commerce pour un restaurant de burgers. Les utilisateurs peuvent passer des commandes en ligne après s'être connectés. Il y a aussi un mode admin pour ajouter ou retirer des produits du menu.
 > **Note**: Ce projet est en cours de développement.
+Suite à la maj de mac os sonoma, le rendu sur safari n'est pas optimale, travail en cours...
+
 
 ## Technologies Utilisées
 - ReactJS
