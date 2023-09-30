@@ -10,7 +10,18 @@ const COMING_SOON = "/public/images/coming-soon.png"
 export default function Menu() {
   // state
 
-  const { menu, isAdmin, handleDelete, setProductSelected, productSelected, setIsOpen, setCurrentTab, titleEditRef, basket, handleAddToBasket } = useContext(AdminContext)
+  const {
+    menu,
+    isAdmin,
+    handleDelete,
+    setProductSelected,
+    productSelected,
+    setIsOpen,
+    setCurrentTab,
+    titleEditRef,
+    basket,
+    handleAddToBasket,
+    handleDeleteBasketProduct } = useContext(AdminContext)
   //comportement
   const handleClick = async (idProductClicked) => {
     if (!isAdmin) return
@@ -29,6 +40,7 @@ export default function Menu() {
   const handleCardDelete = (event, id) => {
     event.stopPropagation(event)
     handleDelete(id)
+    handleDeleteBasketProduct(id)
     titleEditRef.current.focus()
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }

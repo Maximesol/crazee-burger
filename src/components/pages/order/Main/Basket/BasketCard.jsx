@@ -28,6 +28,7 @@ export default function BasketCard({ title, price, quantity, imageSource, isAdmi
 }
 
 const BasketCardStyled = styled(({ isAdmin, ...rest }) => <div {...rest} />)`
+
   box-sizing: border-box;  
   display: flex;
   align-items: center;
@@ -60,6 +61,7 @@ const BasketCardStyled = styled(({ isAdmin, ...rest }) => <div {...rest} />)`
     }
   }
 
+
   &:hover {
     .quantity {
         display: none;  /* toujours cacher la quantité lors du survol */
@@ -67,7 +69,18 @@ const BasketCardStyled = styled(({ isAdmin, ...rest }) => <div {...rest} />)`
     .delete-button {
         display: flex;  /* toujours montrer le bouton de suppression lors du survol */
     }
+  
 }
+:hover {
+        .icon {
+          color: ${theme.colors.dark};
+        }
+        :active {
+          .icon {
+            color: ${theme.colors.white};
+          }
+        }
+      }
 
   .image {
     margin-bottom: 10px;
@@ -80,6 +93,7 @@ const BasketCardStyled = styled(({ isAdmin, ...rest }) => <div {...rest} />)`
   }
 
   .text-info {
+    user-select: none;
     width: calc(100% - 86px);
     margin-left: 16px;
     display: flex;
