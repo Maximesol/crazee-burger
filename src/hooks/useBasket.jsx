@@ -35,8 +35,8 @@ export const useBasket = () => {
         const basketCopy = deepClone(basket)
 
         //2. manip de la copie state
-        //const basketUpdated = basketCopy.filter((product) => product.id !== idBasketProduct)
-        const basketUpdated = filter(idBasketProduct, basketCopy)
+        const basketUpdated = basketCopy.filter((product) => product.id !== idBasketProduct)
+        //const basketUpdated = filter(idBasketProduct, basketCopy)
 
         //3. update du state
         setBasket(basketUpdated)
@@ -44,5 +44,5 @@ export const useBasket = () => {
 
 
 
-    return { basket, handleAddToBasket }
+    return { basket, handleDeleteBasketProduct, handleAddToBasket }
 }
