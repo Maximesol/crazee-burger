@@ -55,25 +55,19 @@ const BasketCardStyled = styled(({ isAdmin, ...rest }) => <div {...rest} />)`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    ${props => props.isAdmin && `
-      &:hover {
+    &:hover {
         display: flex;
-      }
-    `}
+    }
   }
 
   &:hover {
     .quantity {
-      ${props => props.isAdmin && `
-        display: none;
-      `}
+        display: none;  /* toujours cacher la quantité lors du survol */
     }
     .delete-button {
-      ${props => props.isAdmin && `
-        display: flex;
-      `}
+        display: flex;  /* toujours montrer le bouton de suppression lors du survol */
     }
-  }
+}
 
   .image {
     margin-bottom: 10px;
