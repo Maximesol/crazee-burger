@@ -230,11 +230,11 @@ const selectedStyle = css`
     }
   }
 
-  .text-info {
+  
     .description {
-      .left-description {
+      .price {
         color: ${theme.colors.white};
       }
     }
-  }
+  
 `

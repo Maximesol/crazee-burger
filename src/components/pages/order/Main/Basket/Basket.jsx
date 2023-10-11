@@ -11,32 +11,33 @@ import { theme } from '../../../../../theme';
 
 export default function Basket() {
 
-    // state
-    const { basket, isAdmin, handleDeleteBasketProduct } = useContext(AdminContext)
+  // state
+  const { basket, isAdmin, handleDeleteBasketProduct, menu } = useContext(AdminContext)
 
 
-    //comportement
+  //comportement
 
-    const totalToPay = basket.reduce((total, basketProduct) => {
-        if (isNaN(basketProduct.price)) return total
+  const totalToPay = basket.reduce((total, basketProduct) => {
+    const menuProduct = menu.find(({ id }) => id === basketProduct.id)
+    if (isNaN(basketProduct.price)) return total
 
-        return total + (basketProduct.price * basketProduct.quantity)
+    return total + (menuProduct.price * basketProduct.quantity)
 
-    }, 0)
+  }, 0)
 
-    //affichage
-    return (
-        <BasketStyled>
-            <Header amountToPay={formatPrice(totalToPay)} />
-            {basket.length === 0 ? <EmptyBasketBody /> : <BasketProducts
-                basket={basket}
-                isAdmin={isAdmin}
-                handleDeleteBasketProduct={handleDeleteBasketProduct} />}
+  //affichage
+  return (
+    <BasketStyled>
+      <Header amountToPay={formatPrice(totalToPay)} />
+      {basket.length === 0 ? <EmptyBasketBody /> : <BasketProducts
+        basket={basket}
+        isAdmin={isAdmin}
+        handleDeleteBasketProduct={handleDeleteBasketProduct} />}
 
-            <Footer />
+      <Footer />
 
-        </BasketStyled>
-    )
+    </BasketStyled>
+  )
 }
 
 const BasketStyled = styled.div`

@@ -23,6 +23,15 @@ export default function OrderPage() {
     const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
 
+    const handleProductSelected = async (idProductClicked) => {
+        const productClickOn = menu.find(({ id }) => id === idProductClicked)
+        await setIsOpen(true)
+        await setCurrentTab("edit")
+        await setProductSelected(productClickOn)
+        titleEditRef.current.focus()
+    }
+
+
 
 
 
@@ -48,7 +57,8 @@ export default function OrderPage() {
         titleEditRef,
         basket,
         handleAddToBasket,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
+        handleProductSelected
 
     }
 

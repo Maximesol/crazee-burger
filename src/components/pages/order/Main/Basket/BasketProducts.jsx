@@ -1,27 +1,46 @@
 import React from 'react'
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
+import AdminContext from "../../../../../contexts/AdminContext.jsx"
+import { useContext } from 'react';
 
 const COMING_SOON = "/public/images/coming-soon.png"
 
 
 export default function BasketProducts({ basket, isAdmin, handleDeleteBasketProduct }) {
 
-  const handleDelete = (id) => {
+  const { menu, handleProductSelected, productSelected } = useContext(AdminContext)
+
+  const handleDelete = (event, id) => {
+    event.stopPropagation()
     handleDeleteBasketProduct(id)
   }
 
+  const checkIfProductIsClicked = (idProductClicked, idProductSelected) => {
+    return idProductClicked === idProductSelected
+  }
+
+
+
   return (
     <BasketProductsStyled>
-      {basket.map((product) => (
-        <div className='basket-card' key={product.id}>
-          <BasketCard
-            {...product}
-            imageSource={product.imageSource ? product.imageSource : COMING_SOON}
-            isAdmin={isAdmin}
-            onDelete={() => handleDelete(product.id)} />
-        </div>
-      ))}
+      {basket.map((product) => {
+        const menuProduct = menu.find(({ id }) => id === product.id)
+        return (
+          <div className='basket-card' key={product.id}>
+            <BasketCard
+              {...menuProduct}
+              imageSource={menuProduct.imageSource ? menuProduct.imageSource : COMING_SOON}
+              isClickable={isAdmin}
+              quantity={product.quantity}
+              onDelete={(event) => handleDelete(event, product.id)}
+              onClick={isAdmin ? () => handleProductSelected(product.id) : null}
+              isSelected={checkIfProductIsClicked(product.id, productSelected.id)}
+
+            />
+          </div>
+        )
+      })}
     </BasketProductsStyled>
   )
 }
