@@ -16,22 +16,16 @@ export default function Menu() {
     handleDelete,
     setProductSelected,
     productSelected,
-    setIsOpen,
-    setCurrentTab,
     titleEditRef,
     basket,
     handleAddToBasket,
-    handleDeleteBasketProduct } = useContext(AdminContext)
-  //comportement
-  const handleClick = async (idProductClicked) => {
-    if (!isAdmin) return
-    await setIsOpen(true)
-    await setCurrentTab("edit")
-    const productClickOn = menu.find(({ id }) => id === idProductClicked)
-    await setProductSelected(productClickOn)
-    titleEditRef.current.focus()
+    handleDeleteBasketProduct,
+    handleProductSelected
+  } = useContext(AdminContext)
 
-  }
+
+  //comportement
+
 
   const checkIfProductIsClicked = (idProductClicked, idProductSelected) => {
     return idProductClicked === idProductSelected
@@ -53,13 +47,6 @@ export default function Menu() {
   }
 
 
-
-
-
-
-
-
-
   // affichage
   if (menu.length === 0) {
     if (isAdmin) return <EmptyMenuAdmin />
@@ -75,7 +62,7 @@ export default function Menu() {
           imageSource={imageSource ? imageSource : COMING_SOON}
           price={price}
           onDelete={(event) => handleCardDelete(event, id)}
-          onClick={() => handleClick(id)}
+          onClick={isAdmin ? () => handleProductSelected(id) : null}
           isHoverable={isAdmin}
           hasDeleteButton={isAdmin}
           onAddToBasket={(event) => handleAddToButton(id, event)}

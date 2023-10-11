@@ -4,9 +4,9 @@ import { formatPrice } from "../../../../../utils/maths";
 import { MdDeleteForever } from "react-icons/md";
 import { theme } from "../../../../../theme";
 
-export default function BasketCard({ title, price, quantity, imageSource, isClickable, onDelete, ...rest }) {
+export default function BasketCard({ title, price, quantity, onClick, imageSource, isClickable, onDelete, ...rest }) {
   return (
-    <BasketCardStyled isClickable={isClickable}>
+    <BasketCardStyled isClickable={isClickable} onClick={onClick}>
       <div className="delete-button" onClick={onDelete}>
 
         <MdDeleteForever className="icon" />

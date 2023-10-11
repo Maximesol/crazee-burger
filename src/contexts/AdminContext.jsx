@@ -22,6 +22,7 @@ export default createContext({
     setBasket: () => { },
     handleAddToBasket: () => { },
     handleDeleteBasketProduct: () => { },
+    handleProductSelected: () => { },
 
 
 
