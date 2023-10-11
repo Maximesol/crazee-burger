@@ -9,11 +9,15 @@ const COMING_SOON = "/public/images/coming-soon.png"
 
 export default function BasketProducts({ basket, isAdmin, handleDeleteBasketProduct }) {
 
-  const { menu, handleProductSelected } = useContext(AdminContext)
+  const { menu, handleProductSelected, productSelected } = useContext(AdminContext)
 
   const handleDelete = (event, id) => {
     event.stopPropagation()
     handleDeleteBasketProduct(id)
+  }
+
+  const checkIfProductIsClicked = (idProductClicked, idProductSelected) => {
+    return idProductClicked === idProductSelected
   }
 
 
@@ -31,6 +35,8 @@ export default function BasketProducts({ basket, isAdmin, handleDeleteBasketProd
               quantity={product.quantity}
               onDelete={(event) => handleDelete(event, product.id)}
               onClick={isAdmin ? () => handleProductSelected(product.id) : null}
+              isSelected={checkIfProductIsClicked(product.id, productSelected.id)}
+
             />
           </div>
         )
