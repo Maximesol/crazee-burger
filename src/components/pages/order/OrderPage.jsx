@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
@@ -8,6 +8,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from '../../../hooks/useMenu';
 import { useBasket } from '../../../hooks/useBasket';
 import { useParams } from 'react-router-dom';
+import { getMenu } from "../../../api/product";
 
 
 export default function OrderPage() {
@@ -20,7 +21,7 @@ export default function OrderPage() {
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
-    const { menu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
+    const { menu, setMenu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
     const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
     const { username } = useParams()
 
@@ -49,6 +50,7 @@ export default function OrderPage() {
         isOpen,
         setIsOpen,
         menu,
+        setMenu,
         handleAdd,
         handleDelete,
         resetMenu,
@@ -66,6 +68,15 @@ export default function OrderPage() {
     }
 
     //comportement
+
+    const initialiseMenu = async () => {
+        const menuReceived = await getMenu(username)
+        setMenu(menuReceived)
+    }
+
+    useEffect(() => {
+        initialiseMenu()
+    }, [])
 
 
     //affichage

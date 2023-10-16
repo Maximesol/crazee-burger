@@ -31,11 +31,10 @@ export default function Menu() {
     return idProductClicked === idProductSelected
   }
 
-  const handleCardDelete = (event, id) => {
+  const handleCardDelete = (event, id,) => {
     event.stopPropagation(event)
     handleDelete(id)
     handleDeleteBasketProduct(id)
-    titleEditRef.current.focus()
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
 

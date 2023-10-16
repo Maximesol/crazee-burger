@@ -56,6 +56,6 @@ export const useMenu = (setProductSelected) => {
 
 
 
-    return { menu, resetMenu, handleDelete, handleEdit, handleAdd }
+    return { menu, setMenu, resetMenu, handleDelete, handleEdit, handleAdd }
 
 }
