@@ -23,7 +23,7 @@ export const createUser = (userId) => {
 
     const nourriture = {
         username: userId,
-        menu: fakeMenu2
+        menu: fakeMenu2,
     }
     setDoc(cachette, nourriture)
 }
@@ -32,7 +32,6 @@ export const createUser = (userId) => {
 
 export const authenticateUser = async (userId) => {
     const existingUser = await getUser(userId)
-    console.log("existingUser : ", existingUser)
 
     if (!existingUser) {
         createUser(userId)

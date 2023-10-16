@@ -7,6 +7,7 @@ import AdminContext from "../../../contexts/AdminContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from '../../../hooks/useMenu';
 import { useBasket } from '../../../hooks/useBasket';
+import { useParams } from 'react-router-dom';
 
 
 export default function OrderPage() {
@@ -21,6 +22,7 @@ export default function OrderPage() {
     const titleEditRef = useRef()
     const { menu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
     const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { username } = useParams()
 
 
     const handleProductSelected = async (idProductClicked) => {
@@ -39,6 +41,7 @@ export default function OrderPage() {
 
 
     const adminContextValue = {
+        username,
         isAdmin,
         setIsAdmin,
         currentTab,

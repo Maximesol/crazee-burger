@@ -5,7 +5,6 @@ import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
 import TextInput from "../../reusable-ui/TextInput";
 import PrimaryButton from "../../reusable-ui/PrimaryButton";
-import { theme } from "../../../theme";
 import { authenticateUser } from '../../../api/user';
 import Welcome from "./Welcome";
 
@@ -15,12 +14,11 @@ export default function LoginForm() {
   // state
   const [name, setName] = useState("");
   const navigate = useNavigate()
-  const [isActive, setIsActive] = useState(false)
 
   // comportements
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await authenticateUser(name);
+    authenticateUser(name);
     navigate(`order/${name}`)
     setName("");
   };

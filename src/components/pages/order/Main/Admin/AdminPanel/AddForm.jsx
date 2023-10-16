@@ -11,7 +11,7 @@ import { useSuccessMessage } from '../../../../../../hooks/useSuccesMessage';
 
 export default function AddForm() {
     // state
-    const { handleAdd } = useContext(AdminContext)
+    const { handleAdd, username } = useContext(AdminContext)
     const { newProduct, setNewProduct } = useContext(AdminContext)
     const { productAdded, handleSuccessMessage } = useSuccessMessage()
 
@@ -23,7 +23,7 @@ export default function AddForm() {
             ...newProduct,
             id: crypto.randomUUID()
         }
-        handleAdd(newProductToAdd)
+        handleAdd(newProductToAdd, username)
         setNewProduct(EMPTY_PRODUCT)
         handleSuccessMessage()
     }

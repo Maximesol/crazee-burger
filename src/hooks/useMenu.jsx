@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { fakeMenu2 } from "../fakeData/fakeMenu"
 import { deepClone } from "../utils/array";
+import { syncBothMenus } from '../api/product';
 
 
 
@@ -10,7 +11,7 @@ export const useMenu = (setProductSelected) => {
 
 
     //comportements et gestionnaire d'état :
-    const handleAdd = (newProduct) => {
+    const handleAdd = (newProduct, username) => {
         //1 copie du state
 
         //const menuCopy = [...menu] (manière moyenne)
@@ -22,6 +23,7 @@ export const useMenu = (setProductSelected) => {
         // setteur
 
         setMenu(menuCopyUpdated)
+        syncBothMenus(username, menuCopyUpdated)
     }
 
     const handleEdit = (productBeingEdited) => {
