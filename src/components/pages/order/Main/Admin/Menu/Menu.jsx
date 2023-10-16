@@ -5,6 +5,7 @@ import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import AdminContext from '../../../../../../contexts/AdminContext';
+import Loader from './Loader';
 const COMING_SOON = "/public/images/coming-soon.png"
 
 export default function Menu() {
@@ -47,6 +48,10 @@ export default function Menu() {
 
 
   // affichage
+  if (menu == undefined) {
+    return <Loader />
+  }
+
   if (menu.length === 0) {
     if (isAdmin) return <EmptyMenuAdmin />
     return <EmptyMenuClient />

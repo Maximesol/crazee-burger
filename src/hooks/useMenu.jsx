@@ -7,7 +7,7 @@ import { syncBothMenus } from '../api/product';
 
 export const useMenu = (setProductSelected) => {
     //state 
-    const [menu, setMenu] = useState(fakeMenu2)
+    const [menu, setMenu] = useState()
 
 
     //comportements et gestionnaire d'état :
