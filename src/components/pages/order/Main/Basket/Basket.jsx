@@ -8,6 +8,7 @@ import { useContext } from 'react';
 import AdminContext from '../../../../../contexts/AdminContext';
 import BasketProducts from './BasketProducts';
 import { theme } from '../../../../../theme';
+import Loader from '../Admin/Menu/Loader';
 
 export default function Basket() {
 
@@ -16,6 +17,7 @@ export default function Basket() {
 
 
   //comportement
+  if (menu === undefined) return <Loader />
 
   const totalToPay = basket.reduce((total, basketProduct) => {
     const menuProduct = menu.find(({ id }) => id === basketProduct.id)
@@ -24,6 +26,7 @@ export default function Basket() {
     return total + (menuProduct.price * basketProduct.quantity)
 
   }, 0)
+
 
   //affichage
   return (

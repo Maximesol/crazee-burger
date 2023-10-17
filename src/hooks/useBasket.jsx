@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { deepClone } from '../utils/array'
 import { fakeBasket } from '../fakeData/fakeBasket'
+import { setLocalStorage } from '../utils/window'
 
 export const useBasket = () => {
 
@@ -9,7 +10,7 @@ export const useBasket = () => {
 
     //comportement
 
-    const handleAddToBasket = (productToAdd) => {
+    const handleAddToBasket = (productToAdd, username) => {
 
         const existingProductIndex = basket.findIndex((product) => product.id === productToAdd.id);
 
@@ -28,6 +29,7 @@ export const useBasket = () => {
         }
 
         setBasket(newBasket);
+        setLocalStorage(username, newBasket)
     }
 
     const handleDeleteBasketProduct = (idBasketProduct) => {
@@ -44,5 +46,5 @@ export const useBasket = () => {
 
 
 
-    return { basket, handleDeleteBasketProduct, handleAddToBasket }
+    return { basket, setBasket, handleDeleteBasketProduct, handleAddToBasket }
 }

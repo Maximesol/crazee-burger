@@ -9,6 +9,7 @@ import { useMenu } from '../../../hooks/useMenu';
 import { useBasket } from '../../../hooks/useBasket';
 import { useParams } from 'react-router-dom';
 import { getMenu } from "../../../api/product";
+import { getLocalStorage } from '../../../utils/window';
 
 
 export default function OrderPage() {
@@ -22,7 +23,7 @@ export default function OrderPage() {
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const { menu, setMenu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
-    const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
     const { username } = useParams()
 
 
@@ -61,6 +62,7 @@ export default function OrderPage() {
         handleEdit,
         titleEditRef,
         basket,
+        setBasket,
         handleAddToBasket,
         handleDeleteBasketProduct,
         handleProductSelected
@@ -74,8 +76,17 @@ export default function OrderPage() {
         setMenu(menuReceived)
     }
 
+    const initialiseBasket = () => {
+        const basketReceived = getLocalStorage(username)
+        setBasket(basketReceived)
+    }
+
     useEffect(() => {
         initialiseMenu()
+    }, [])
+
+    useEffect(() => {
+        initialiseBasket()
     }, [])
 
 
