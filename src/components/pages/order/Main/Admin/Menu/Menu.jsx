@@ -12,6 +12,7 @@ export default function Menu() {
   // state
 
   const {
+    username,
     menu,
     isAdmin,
     handleDelete,
@@ -34,7 +35,7 @@ export default function Menu() {
 
   const handleCardDelete = (event, id,) => {
     event.stopPropagation(event)
-    handleDelete(id)
+    handleDelete(id, username)
     handleDeleteBasketProduct(id)
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }

@@ -41,13 +41,14 @@ export const useMenu = (setProductSelected) => {
         setMenu(menuCopyUpdated)
         setProductSelected(productBeingEdited);
     }
-    const handleDelete = (productToDelete) => {
+    const handleDelete = (productToDelete, username) => {
 
         const menuCopy = [...menu]
 
         const menuCopyUpdated = menuCopy.filter(product => product.id !== productToDelete)
 
         setMenu(menuCopyUpdated)
+        syncBothMenus(username, menuCopyUpdated)
 
     }
     const resetMenu = () => {
