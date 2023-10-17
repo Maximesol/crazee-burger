@@ -6,7 +6,7 @@ import React from 'react'
 
 
 
-const Form = React.forwardRef(({ onSubmit, onChange, product, children }, ref) => {
+const Form = React.forwardRef(({ onFocus, onBlur, onSubmit, onChange, product, children }, ref) => {
 
     // state
 
@@ -33,6 +33,8 @@ const Form = React.forwardRef(({ onSubmit, onChange, product, children }, ref) =
                             {...input}
                             onChange={onChange}
                             version="minimalist"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
                             ref={ref && input.name === 'title' ? ref : null}
                         />
                     )
