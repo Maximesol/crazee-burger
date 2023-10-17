@@ -51,8 +51,9 @@ export const useMenu = (setProductSelected) => {
         syncBothMenus(username, menuCopyUpdated)
 
     }
-    const resetMenu = () => {
+    const resetMenu = (username) => {
         setMenu(fakeMenu2)
+        syncBothMenus(username, fakeMenu2)
     }
 
 

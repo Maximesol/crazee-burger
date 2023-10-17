@@ -14,6 +14,7 @@ export default function Menu() {
   const {
     username,
     menu,
+    resetMenu,
     isAdmin,
     handleDelete,
     setProductSelected,
@@ -54,7 +55,7 @@ export default function Menu() {
   }
 
   if (menu.length === 0) {
-    if (isAdmin) return <EmptyMenuAdmin />
+    if (isAdmin) return <EmptyMenuAdmin onReset={() => resetMenu(username)} />
     return <EmptyMenuClient />
   }
 
