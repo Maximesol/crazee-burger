@@ -32,7 +32,7 @@ export const useBasket = () => {
         setLocalStorage(username, newBasket)
     }
 
-    const handleDeleteBasketProduct = (idBasketProduct) => {
+    const handleDeleteBasketProduct = (idBasketProduct, username) => {
         //1. copy du state (optional because filter returns a new array )
         const basketCopy = deepClone(basket)
 
@@ -42,6 +42,7 @@ export const useBasket = () => {
 
         //3. update du state
         setBasket(basketUpdated)
+        setLocalStorage(username, basketUpdated)
     }
 
 

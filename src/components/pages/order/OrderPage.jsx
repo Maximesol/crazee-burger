@@ -83,13 +83,15 @@ export default function OrderPage() {
         }
     }
 
-    useEffect(() => {
-        initialiseMenu()
-    }, [])
+    const initialiseUserSession = async () => {
+        await initialiseMenu()
+        initialiseBasket()
+    }
 
     useEffect(() => {
-        initialiseBasket()
+        initialiseUserSession()
     }, [])
+
 
 
     //affichage

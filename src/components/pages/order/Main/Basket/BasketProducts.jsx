@@ -9,11 +9,11 @@ const COMING_SOON = "/public/images/coming-soon.png"
 
 export default function BasketProducts({ basket, isAdmin, handleDeleteBasketProduct }) {
 
-  const { menu, handleProductSelected, productSelected } = useContext(AdminContext)
+  const { menu, handleProductSelected, productSelected, username } = useContext(AdminContext)
 
   const handleDelete = (event, id) => {
     event.stopPropagation()
-    handleDeleteBasketProduct(id)
+    handleDeleteBasketProduct(id, username)
   }
 
   const checkIfProductIsClicked = (idProductClicked, idProductSelected) => {
