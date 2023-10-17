@@ -26,7 +26,7 @@ export const useMenu = (setProductSelected) => {
         syncBothMenus(username, menuCopyUpdated)
     }
 
-    const handleEdit = (productBeingEdited) => {
+    const handleEdit = (productBeingEdited, username) => {
 
         const menuCopy = deepClone(menu)
 
@@ -39,7 +39,8 @@ export const useMenu = (setProductSelected) => {
         })
 
         setMenu(menuCopyUpdated)
-        setProductSelected(productBeingEdited);
+        setProductSelected(productBeingEdited)
+        syncBothMenus(username, menuCopyUpdated)
     }
     const handleDelete = (productToDelete, username) => {
 

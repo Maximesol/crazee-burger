@@ -10,7 +10,7 @@ import Form from './Form.jsx';
 
 export default function AddEdit() {
 
-    const { productSelected, handleEdit, isAdmin, titleEditRef } = useContext(AdminContext)
+    const { productSelected, handleEdit, isAdmin, titleEditRef, username } = useContext(AdminContext)
     const [productBeinEdited, setProductBeinEdited] = useState(EMPTY_PRODUCT)
 
 
@@ -27,7 +27,7 @@ export default function AddEdit() {
         // erreur : setProductBeinEdited({ ...productSelected, [name]: value })
         const updatedProduct = { ...productSelected, [name]: value }; // bonne valeur !
         setProductBeinEdited(updatedProduct) // cette ligne update le formulaire
-        handleEdit(updatedProduct) // cette ligne update le menu
+        handleEdit(updatedProduct, username) // cette ligne update le menu
     }
 
 
