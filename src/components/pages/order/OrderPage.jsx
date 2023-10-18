@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "../../../theme";
 import Main from "./Main/Main";
@@ -7,6 +7,8 @@ import AdminContext from "../../../contexts/AdminContext";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from '../../../hooks/useMenu';
 import { useBasket } from '../../../hooks/useBasket';
+import { useParams } from 'react-router-dom';
+import { initialiseUserSession } from "./helpers/initialiseUserSession";
 
 
 export default function OrderPage() {
@@ -19,8 +21,9 @@ export default function OrderPage() {
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
-    const { menu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
-    const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { menu, setMenu, resetMenu, handleDelete, handleEdit, handleAdd } = useMenu(setProductSelected)
+    const { basket, setBasket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+    const { username } = useParams()
 
 
     const handleProductSelected = async (idProductClicked) => {
@@ -32,13 +35,8 @@ export default function OrderPage() {
     }
 
 
-
-
-
-
-
-
     const adminContextValue = {
+        username,
         isAdmin,
         setIsAdmin,
         currentTab,
@@ -46,6 +44,7 @@ export default function OrderPage() {
         isOpen,
         setIsOpen,
         menu,
+        setMenu,
         handleAdd,
         handleDelete,
         resetMenu,
@@ -56,6 +55,7 @@ export default function OrderPage() {
         handleEdit,
         titleEditRef,
         basket,
+        setBasket,
         handleAddToBasket,
         handleDeleteBasketProduct,
         handleProductSelected
@@ -64,6 +64,9 @@ export default function OrderPage() {
 
     //comportement
 
+    useEffect(() => {
+        initialiseUserSession(username, setMenu, setBasket)
+    }, [])
 
     //affichage
 

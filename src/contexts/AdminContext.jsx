@@ -1,6 +1,7 @@
 import { createContext } from "react";
 
 export default createContext({
+    username: "string",
     isAdmin: false,
     setIsAdmin: () => { },
     currentTab: "string",

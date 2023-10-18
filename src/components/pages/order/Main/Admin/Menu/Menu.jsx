@@ -5,13 +5,16 @@ import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import AdminContext from '../../../../../../contexts/AdminContext';
+import Loader from './Loader';
 const COMING_SOON = "/public/images/coming-soon.png"
 
 export default function Menu() {
   // state
 
   const {
+    username,
     menu,
+    resetMenu,
     isAdmin,
     handleDelete,
     setProductSelected,
@@ -31,25 +34,28 @@ export default function Menu() {
     return idProductClicked === idProductSelected
   }
 
-  const handleCardDelete = (event, id) => {
+  const handleCardDelete = (event, id,) => {
     event.stopPropagation(event)
-    handleDelete(id)
-    handleDeleteBasketProduct(id)
-    titleEditRef.current.focus()
+    handleDelete(id, username)
+    handleDeleteBasketProduct(id, username)
     id === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
 
   const handleAddToButton = (idProductToAdd, event) => {
     event.stopPropagation()
     const productToAdd = menu.find(({ id }) => id === idProductToAdd);
-    handleAddToBasket(productToAdd)
+    handleAddToBasket(productToAdd, username)
 
   }
 
 
   // affichage
+  if (menu == undefined) {
+    return <Loader />
+  }
+
   if (menu.length === 0) {
-    if (isAdmin) return <EmptyMenuAdmin />
+    if (isAdmin) return <EmptyMenuAdmin onReset={() => resetMenu(username)} />
     return <EmptyMenuClient />
   }
 

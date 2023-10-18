@@ -1,22 +1,19 @@
-import { useContext } from 'react'
 import styled from 'styled-components';
-import AdminContext from '../../../../../../contexts/AdminContext'
 import PrimaryButton from '../../../../../reusable-ui/PrimaryButton'
 import { theme } from '../../../../../../theme/index';
 
-export default function EmptyMenuAdmin({ }) {
-    const { resetMenu } = useContext(AdminContext)
-    return (
-        <EmptyMenuAdminStyle>
-            <span className='title'>Le Menu est Vide ?</span>
-            <span className='description'>Cliquez ci-dessous pour le réinitialiser</span>
-            <PrimaryButton
-                label="Générer de nouveaux produits"
-                onClick={resetMenu}
-                version="default"
-            />
-        </EmptyMenuAdminStyle>
-    )
+export default function EmptyMenuAdmin({ onReset }) {
+  return (
+    <EmptyMenuAdminStyle>
+      <span className='title'>Le Menu est Vide ?</span>
+      <span className='description'>Cliquez ci-dessous pour le réinitialiser</span>
+      <PrimaryButton
+        label="Générer de nouveaux produits"
+        onClick={onReset}
+        version="default"
+      />
+    </EmptyMenuAdminStyle>
+  )
 }
 
 const EmptyMenuAdminStyle = styled.div`

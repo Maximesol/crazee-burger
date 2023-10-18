@@ -5,7 +5,8 @@ import { IoChevronForward } from "react-icons/io5"
 import { BsPersonCircle } from "react-icons/bs"
 import TextInput from "../../reusable-ui/TextInput";
 import PrimaryButton from "../../reusable-ui/PrimaryButton";
-import { theme } from "../../../theme";
+import { authenticateUser } from '../../../api/user';
+import Welcome from "./Welcome";
 
 
 
@@ -13,11 +14,11 @@ export default function LoginForm() {
   // state
   const [name, setName] = useState("");
   const navigate = useNavigate()
-  const [isActive, setIsActive] = useState(false)
 
   // comportements
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    authenticateUser(name);
     navigate(`order/${name}`)
     setName("");
   };
@@ -25,9 +26,7 @@ export default function LoginForm() {
   // affichage
   return (
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <hr className="separation" />
-      <h2>Connectez-vous</h2>
+      <Welcome />
       <TextInput
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -60,18 +59,7 @@ const LoginFormStyled = styled.form`
   align-items:center;
   font-family: Amatic SC;
 
-  h1, h2 {
-    ${theme.colors.white};
-  }
-
-  h1 {
-    color: ${theme.colors.white};
-    text-align: center;
-    font-family: Amatic SC;
-    font-size: ${theme.fonts.P5};
-    font-style: normal;
-    font-weight: ${theme.weights.bold};
-    }
+  
 
     .chevron-icon {
     width: 15px;
@@ -86,23 +74,6 @@ const LoginFormStyled = styled.form`
     height: 15px;
     justify-content: center;
     align-items: center;
-  }
-
-  h2 {
-    color: ${theme.colors.white};
-    text-align: center;
-    font-family: Amatic SC;
-    font-size: ${theme.fonts.P4};
-    font-style: normal;
-    font-weight: ${theme.weights.bold};
-    
-  }
-
-    .separation {
-    width: 400px;
-    height: 2px;
-    border: 1px solid #F56A2C;
-    background: #F56A2C;
   }
 
   .bouton-login {

@@ -5,13 +5,17 @@ import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import HintMessage from './HintMessage.jsx';
 import AddEditInfoMessage from './AddEditInfoMessage.jsx';
 import Form from './Form.jsx';
+import SavingMessage from './SavingMessage.jsx';
+import { useSuccessMessage } from '../../../../../../hooks/useSuccesMessage';
 
 
 
 export default function AddEdit() {
 
-    const { productSelected, handleEdit, isAdmin, titleEditRef } = useContext(AdminContext)
+    const { productSelected, handleEdit, isAdmin, titleEditRef, username } = useContext(AdminContext)
     const [productBeinEdited, setProductBeinEdited] = useState(EMPTY_PRODUCT)
+    const [valueOnFocus, setValueOnFocus] = useState()
+    const { productAdded: isSaved, handleSuccessMessage } = useSuccessMessage()
 
 
 
@@ -27,7 +31,7 @@ export default function AddEdit() {
         // erreur : setProductBeinEdited({ ...productSelected, [name]: value })
         const updatedProduct = { ...productSelected, [name]: value }; // bonne valeur !
         setProductBeinEdited(updatedProduct) // cette ligne update le formulaire
-        handleEdit(updatedProduct) // cette ligne update le menu
+        handleEdit(updatedProduct, username) // cette ligne update le menu
     }
 
 
@@ -36,11 +40,26 @@ export default function AddEdit() {
         return <HintMessage />
     }
 
+    const handleOnFocus = (event) => {
+        const inputvalueOnFocus = event.target.value
+        setValueOnFocus(inputvalueOnFocus)
+        console.log(inputvalueOnFocus)
+    }
+
+    const handleOnBlur = (event) => {
+        const valueOnBlur = event.target.value
+        if (valueOnFocus !== valueOnBlur) {
+            console.log('sa a changé')
+            handleSuccessMessage()
+        }
+
+    }
+
 
     return (
-        <Form product={productSelected} onChange={handlechange} ref={titleEditRef}>
+        <Form onFocus={handleOnFocus} onBlur={handleOnBlur} product={productSelected} onChange={handlechange} ref={titleEditRef}>
             {isAdmin && !productSelected.id && <HintMessage />}
-            <AddEditInfoMessage />
+            {isSaved ? <SavingMessage /> : <AddEditInfoMessage />}
         </Form>
 
 
