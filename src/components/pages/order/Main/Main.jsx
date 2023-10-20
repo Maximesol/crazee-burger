@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import AdminContext from '../../../../contexts/AdminContext';
 import { theme } from '../../../../theme';
@@ -7,10 +8,12 @@ import Menu from './Admin/Menu/Menu';
 import Basket from './Basket/Basket';
 
 
+
 export default function Main() {
 
     //state
     const { isAdmin } = useContext(AdminContext)
+
 
 
     //comportements
@@ -21,7 +24,14 @@ export default function Main() {
             <Basket />
             <div className='menu-add-admin'>
                 <Menu />
-                {isAdmin && <Admin />}
+                {isAdmin && (
+                    <TransitionGroup className={"transition-group"}>
+                        <CSSTransition classNames={"admin"} timeout={1000} appear={true}>
+                            <Admin />
+
+                        </CSSTransition>
+                    </TransitionGroup>
+                )}
             </div>
         </MainStyled>
     )
@@ -44,5 +54,22 @@ const MainStyled = styled.div`
         overflow-y: hidden;
         display: grid;
     }
+    
+
+    .admin-appear {
+
+        opacity: 0.1;
+        transform: translateY(100%);
+        &.admin-appear-active {
+
+            opacity: 1;
+            transform: translateY(0%);
+            transition: all 500ms;
+        }
+        &.admin-enter-done {
+
+        }
+    }
+ 
     
 `;
