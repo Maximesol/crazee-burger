@@ -1,6 +1,6 @@
 import { css } from 'styled-components'
 
-const adminAnimation = css`
+export const adminAnimation = css`
     .admin-appear {
 
 opacity: 0.1;
@@ -15,4 +15,47 @@ transform: translateY(100%);
 }
 `
 
-export default adminAnimation
+export const basketAnimation = css`
+  .animation-basket-appear{
+    .card {
+      transform: translateX(100px);
+      opacity: 0%;
+    }
+  }
+
+  .animation-basket-appear-active{
+    .card {
+      transition: 0.5s;
+      transform: translateX(0px);
+      opacity: 100%;
+    }
+  }
+
+  .animation-basket-enter{
+    .card {
+      transform: translateX(100px);
+    }
+  }
+  .animation-basket-enter-active{
+    .card {
+      transition: 0.5s;
+      transform: translateX(0px);
+    }
+
+  }
+  
+
+  .animation-basket-exit{
+    .card {
+      transform: translateX(0px);
+      opacity: 100%;
+    }
+  }
+  .animation-basket-exit-active{
+    .card {
+      transform: translateX(-100px);
+      transition: 0.5s;
+      opacity: 0%;
+    }
+  }
+`

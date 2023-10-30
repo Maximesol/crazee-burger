@@ -6,7 +6,7 @@ import { theme } from '../../../../theme';
 import Admin from './Admin/Admin';
 import Menu from './Admin/Menu/Menu';
 import Basket from './Basket/Basket';
-import { adminAnimation } from "../../../../theme/animation"
+import adminAnimation from '../../../../theme/animation';
 
 
 
