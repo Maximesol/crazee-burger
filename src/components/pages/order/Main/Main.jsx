@@ -6,6 +6,7 @@ import { theme } from '../../../../theme';
 import Admin from './Admin/Admin';
 import Menu from './Admin/Menu/Menu';
 import Basket from './Basket/Basket';
+import { adminAnimation } from "../../../../theme/animation"
 
 
 
@@ -37,6 +38,7 @@ export default function Main() {
     )
 }
 
+
 const MainStyled = styled.div`
     background: ${theme.colors.background_white};
     flex:1;
@@ -54,22 +56,5 @@ const MainStyled = styled.div`
         overflow-y: hidden;
         display: grid;
     }
-    
-
-    .admin-appear {
-
-        opacity: 0.1;
-        transform: translateY(100%);
-        &.admin-appear-active {
-
-            opacity: 1;
-            transform: translateY(0%);
-            transition: all 500ms;
-        }
-        &.admin-enter-done {
-
-        }
-    }
- 
-    
+    ${adminAnimation} 
 `;
