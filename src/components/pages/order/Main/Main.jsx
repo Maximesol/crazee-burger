@@ -1,20 +1,16 @@
 import { useContext } from 'react';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import AdminContext from '../../../../contexts/AdminContext';
 import { theme } from '../../../../theme';
 import Admin from './Admin/Admin';
 import Menu from './Admin/Menu/Menu';
 import Basket from './Basket/Basket';
-import { adminAnimation } from '../../../../theme/animation';
-
 
 
 export default function Main() {
 
     //state
     const { isAdmin } = useContext(AdminContext)
-
 
 
     //comportements
@@ -25,19 +21,11 @@ export default function Main() {
             <Basket />
             <div className='menu-add-admin'>
                 <Menu />
-                {isAdmin && (
-                    <TransitionGroup className={"transition-group"}>
-                        <CSSTransition classNames={"admin"} timeout={1000} appear={true}>
-                            <Admin />
-
-                        </CSSTransition>
-                    </TransitionGroup>
-                )}
+                {isAdmin && <Admin />}
             </div>
         </MainStyled>
     )
 }
-
 
 const MainStyled = styled.div`
     background: ${theme.colors.background_white};
@@ -56,5 +44,5 @@ const MainStyled = styled.div`
         overflow-y: hidden;
         display: grid;
     }
-    ${adminAnimation} 
+    
 `;

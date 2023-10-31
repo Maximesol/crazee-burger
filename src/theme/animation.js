@@ -1,4 +1,5 @@
 import { css, keyframes } from 'styled-components'
+import { TransitionGroup } from 'react-transition-group';
 
 export const fadeInFromRight = keyframes`
 
@@ -12,6 +13,19 @@ export const fadeInFromRight = keyframes`
   opacity: 1;
   transform: translateX(0%);
 }
+
+`
+
+export const fadeInFromBottom = keyframes`
+0% {
+  transform: translateY(100%);
+  opacity: 0;
+}
+100% {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
 
 `
 
@@ -73,4 +87,29 @@ export const basketAnimation = css`
       opacity: 0%;
     }
   }
+
+`
+
+export const menuAnimation = css`
+/* MOUNTING */
+  .menu-animation-enter {
+    opacity: 0.01;
+    transform: translateX(-120px);
+    &.menu-animation-enter-active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 500ms ease-out;
+    }
+  }
+
+  /* UNMOUNTING */
+  .menu-animation-exit {
+    opacity: 1;
+    transform: translateY(0);
+    &.menu-animation-exit-active {
+      opacity: 0.01;
+      transition: 500ms ease-out;
+    }
+  }
+
 `
