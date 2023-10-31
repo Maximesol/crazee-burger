@@ -14,7 +14,7 @@ export const getUser = async (idUser) => {
 }
 
 
-export const createUser = (userId) => {
+export const createUser = async (userId) => {
 
     // Pour mieux comprendre le fonctionnement,
     // pensons à une marmotte qui va aller dans sa cachette (l'endroit dans la db) déposer la nourriture (nouvelle données).
