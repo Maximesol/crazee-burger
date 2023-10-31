@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import BasketCard from './BasketCard';
-import AdminContext from "../../../../../contexts/AdminContext.jsx"
+import AdminContext from "../../../../../../contexts/AdminContext.jsx"
 import { useContext } from 'react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
-import { basketAnimation } from '../../../../../theme/animation';
+import { basketAnimation } from '../../../../../../theme/animation';
 
 
 const COMING_SOON = "/public/images/coming-soon.png"
