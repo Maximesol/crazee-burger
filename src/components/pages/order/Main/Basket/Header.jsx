@@ -1,13 +1,13 @@
 import React from 'react'
 import { styled } from 'styled-components';
+import CasinoEffect from '../../../../reusable-ui/CasinoEffect';
 
 export default function Header({ amountToPay }) {
     return (
         <HeaderStyled >
             <div className='header-text'>
                 <span>TOTAL</span>
-                <span>{amountToPay}</span>
-
+                <CasinoEffect count={amountToPay} />
             </div>
         </HeaderStyled>
     )

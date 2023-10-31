@@ -5,6 +5,7 @@ import PrimaryButton from './PrimaryButton';
 import { theme } from '../../theme';
 import { TiDelete } from 'react-icons/ti'
 import { css } from 'styled-components';
+import { fadeInFromRight } from '../../theme/animation';
 
 
 
@@ -100,6 +101,8 @@ position: relative;
       color: rgb(204, 71, 61)
 
     }
+  animation: ${fadeInFromRight} 500ms ease-out;
+  
 }
 
 .icon{
@@ -228,6 +231,7 @@ const selectedStyle = css`
     :active {
       color: ${theme.colors.white};
     }
+
   }
 
   

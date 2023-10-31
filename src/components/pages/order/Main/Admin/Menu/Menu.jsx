@@ -6,6 +6,8 @@ import EmptyMenuClient from './EmptyMenuClient';
 import { EMPTY_PRODUCT } from '../../../../../../enums/product';
 import AdminContext from '../../../../../../contexts/AdminContext';
 import Loader from './Loader';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { menuAnimation } from '../../../../../../theme/animation';
 const COMING_SOON = "/public/images/coming-soon.png"
 
 export default function Menu() {
@@ -60,23 +62,26 @@ export default function Menu() {
   }
 
   return (
-    <MenuStyled>
+    <TransitionGroup component={MenuStyled}>
       {menu.map(({ id, title, imageSource, price }) => {
-        return <Card
-          key={id}
-          title={title}
-          imageSource={imageSource ? imageSource : COMING_SOON}
-          price={price}
-          onDelete={(event) => handleCardDelete(event, id)}
-          onClick={isAdmin ? () => handleProductSelected(id) : null}
-          isHoverable={isAdmin}
-          hasDeleteButton={isAdmin}
-          onAddToBasket={(event) => handleAddToButton(id, event)}
-          isSelected={checkIfProductIsClicked(id, productSelected.id)}
-        ></Card>
+        return (
+          <CSSTransition classNames={"menu-animation"} key={id} timeout={500}>
+            <Card
+              key={id}
+              title={title}
+              imageSource={imageSource ? imageSource : COMING_SOON}
+              price={price}
+              onDelete={(event) => handleCardDelete(event, id)}
+              onClick={isAdmin ? () => handleProductSelected(id) : null}
+              isHoverable={isAdmin}
+              hasDeleteButton={isAdmin}
+              onAddToBasket={(event) => handleAddToButton(id, event)}
+              isSelected={checkIfProductIsClicked(id, productSelected.id)}
+            ></Card>
+          </CSSTransition>)
       })}
 
-    </MenuStyled>
+    </TransitionGroup>
   )
 }
 
@@ -91,5 +96,6 @@ const MenuStyled = styled.div`
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
 
-  
+
+  ${menuAnimation}
 `;
